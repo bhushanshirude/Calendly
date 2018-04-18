@@ -1,0 +1,31 @@
+<div class="card col-md-5 offset-3">
+    <div class="card-header">
+        <h5> Sign Up</h5>
+    </div>
+    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm, $event)" novalidate>
+        <div class="card-body ">
+            <div class="row mt-4 ">
+                <div class="col-md-6 ">
+                    <input type="text" name="FirstName" class="form-control" placeholder="Enter First-Name" ngModel #FirstName="ngModel" required>
+                    <small class="text-danger" *ngIf="signupForm.submitted && FirstName.invalid">Enter First Name</small>
+                </div>
+                <div class=" col-md-6">
+                    <input type="text " name="LastName" class="form-control " placeholder="Enter Last-Name" ngModel #lastName="ngModel" required>
+                    <small class="text-danger" *ngIf="signupForm.submitted && lastName.invalid">Enter Last Name</small>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <input type="text" name="Email" class="form-control " placeholder="Enter Email-ID" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel #email="ngModel" required>
+
+                    <small class="text-danger" *ngIf="signupForm.submitted && email.errors && email.errors.required">Enter Email_Id</small>
+
+                    <small class="text-danger" *ngIf="signupForm.submitted && email.errors && email.errors.pattern">Invalid Email!</small>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer mt-3">
+            <button type="submit" class="btn btn-primary">SignUp</button>
+        </div>
+    </form>
+</div>

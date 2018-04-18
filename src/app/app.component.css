@@ -1,0 +1,46 @@
+.navbar-nav img {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.navbar {
+    background-color: #24a557;
+    height: 60px;
+}
+
+.navbar h4 {
+    color: #fff;
+}
+
+.navbar-nav {
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 20px;
+    color: #fff;
+    line-height: 60px;
+}
+
+.nav-item a {
+    color: #fff;
+    /* margin-left: 10px; */
+}
+
+.dropdown-menu {
+    height: 130px;
+    margin-left: 72em;
+}
+
+.dropdown-menu a {
+    color: black;
+}
+
+.dropdown-menu a:hover {
+    background-color: #24a557;
+    cursor: pointer;
+}
+
+.dropdown-item {
+    line-height: 30px;
+}

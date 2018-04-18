@@ -1,0 +1,41 @@
+.row button {
+    cursor: pointer;
+    color: rgb(27, 151, 235);
+    width: 150px;
+}
+
+.row a {
+    font-size: 48px;
+}
+
+.row span {
+    cursor: pointer;
+    color: black;
+    margin-left: 7em;
+}
+
+.row li {
+    margin-left: -50px;
+    display: inline;
+}
+
+.row p {
+    margin-left: -4em;
+}
+
+.row b {
+    margin-left: 7em;
+}
+
+.dropdown-menu {
+    margin-top: 2em;
+    margin-left: 10em;
+}
+
+.dropdown-menu i {
+    cursor: pointer;
+}
+
+.dropdown-menu a {
+    font-size: 24px;
+}

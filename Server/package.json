@@ -1,0 +1,24 @@
+{
+  "name": "simpleidea",
+  "version": "1.0.0",
+  "description": "lasladslslsl",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.4.0",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.13.9",
+    "multer": "^1.3.0",
+    "nodemailer": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "BhushanShirude",
+  "license": "ISC"
+}

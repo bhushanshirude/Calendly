@@ -1,0 +1,10 @@
+.row h6 {
+    cursor: pointer;
+    border-bottom: 2px solid rgb(165, 166, 180);
+    width: 92px;
+    height: 30px;
+}
+
+.row span {
+    cursor: pointer;
+}

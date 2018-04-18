@@ -1,0 +1,23 @@
+<div class="card col-md-5 offset-3 mt-5">
+    <div class="card-header">
+        <h5 class="offset-5">Login</h5>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm,$event)" novalidate>
+        <div class="card-body">
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h6><input class="form-control" id="Email" placeholder="Enter Email or MobileNumber" name="personalDetails.Email" ngModel #Email="ngModel" required></h6>
+                </div>
+            </div>
+            <small class="text-danger" *ngIf="loginForm.submitted && Email.invalid">Enter Email...!</small>
+
+            <div class="input-group mt-4">
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="personalDetails.Password" ngModel #Password="ngModel" required>
+            </div>
+            <small class="text-danger" *ngIf="loginForm.submitted && Password.invalid">Enter Password...!</small>
+        </div>
+        <div class="card-footer ">
+            <button class="btn btn-success offset-5 " type="submit">Login</button>
+        </div>
+    </form>
+</div>
