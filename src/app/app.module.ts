@@ -14,6 +14,10 @@ import { EventtypeComponent } from '../eventtype/eventtype.component';
 import { QuickStartComponent } from '../quick-start/quick-start.component';
 import { PasswordComponent } from '../password/password.component';
 import { VerifyComponent } from '../verify/verify.component';
+import { NewComponent } from '../new/new.component';
+import { OneComponent } from '../one/one.component';
+import { GroupComponent } from '../group/group.component';
+import { ScheduleComponent } from '../schedule/schedule.component';
 
 
 @NgModule({
@@ -27,6 +31,10 @@ import { VerifyComponent } from '../verify/verify.component';
     QuickStartComponent,
     PasswordComponent,
     VerifyComponent,
+    NewComponent,
+    OneComponent,
+    GroupComponent,
+    ScheduleComponent,
 
   ],
   imports: [

@@ -1,0 +1,13 @@
+.row button {
+    cursor: pointer;
+    color: rgb(52, 146, 235);
+    margin-left: 60px;
+    width: 70%;
+}
+
+.row a {
+    color: #fff;
+    font-size: 21px;
+    margin-left: 20px;
+    margin-top: -10px;
+}

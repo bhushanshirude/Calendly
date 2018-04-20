@@ -1,0 +1,38 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-2 offset-1">
+            <button class="form-control" [routerLink]="['/home/event']"><i class="fa fa-angle-left"></i>  Event Types</button>
+        </div>
+        <div class="col-md-4 offset-2">
+            <h5>Create New Event Type</h5>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 5em;">
+        <div class="col-1 offset-2 mt-2">
+            <div class="fa fa-user-o" style="font-size: 36px;">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h5>One-On-One</h5>
+            <h6>Allow invitees to schedule individual slots with you.</h6>
+        </div>
+        <div class="col-sm-2 offset-1">
+            <button style="color: #fff;" class="btn btn-primary" [routerLink]="['/home/one']"> Create<a  class="fa fa-angle-right"></a></button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 5em;">
+        <div class="col-1 offset-2 mt-2">
+            <div class="fa fa-users" style="font-size: 36px;">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h5>Group</h5>
+            <h6>Allow multiple invitees to schedule the same slot. Useful for tours, webinars, classes, workshops, etc.</h6>
+        </div>
+        <div class="col-sm-2 offset-1">
+            <button style="color: #fff;" class="btn btn-primary" [routerLink]="['/home/group']"> Create<a  class="fa fa-angle-right"></a></button>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,11 @@ import { EventtypeComponent } from '../eventtype/eventtype.component';
 import { QuickStartComponent } from '../quick-start/quick-start.component';
 import { PasswordComponent } from '../password/password.component';
 import { VerifyComponent } from '../verify/verify.component';
+import { NewComponent } from '../new/new.component';
+import { OneComponent } from '../one/one.component';
+import { GroupComponent } from '../group/group.component';
+import { ScheduleComponent } from '../schedule/schedule.component';
+
 
 
 export const routes: Routes = [
@@ -21,7 +26,11 @@ export const routes: Routes = [
             {path:'event',component:EventtypeComponent},
             {path:'quick',component:QuickStartComponent},
             {path:'password',component:PasswordComponent},
-            {path:'verify/:id',component:VerifyComponent},  
+            {path:'verify/:id',component:VerifyComponent}, 
+            {path:'new',component:NewComponent} ,
+            {path:'one',component:OneComponent},
+            {path:'group',component:GroupComponent},
+            {path:'schedule',component:ScheduleComponent}
         ]
     }
 ];
