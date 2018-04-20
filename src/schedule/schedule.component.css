@@ -2,3 +2,25 @@
     cursor: pointer;
     color: rgb(26, 156, 189);
 }
+
+.pagination a {
+    font-size: 15px;
+    height: 50px;
+    width: 80px;
+    border: 1px solid rgb(179, 179, 179);
+}
+
+.pagination p {
+    font-size: 14px;
+    margin-top: -9px;
+    color: rgb(179, 179, 179);
+}
+
+.card-body {
+    margin-left: 10px;
+}
+
+.disc {
+    color: rgb(179, 179, 179);
+    margin-left: 3em;
+}

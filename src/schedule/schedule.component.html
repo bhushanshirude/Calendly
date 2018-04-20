@@ -8,7 +8,7 @@
         </div>
     </div>
 </div>
-<div class="card col-md-8 offset-2 mt-5">
+<div class="card col-md-10 offset-1 mt-5">
     <div class="card-header">
         <div class="row mt-1">
             <div class="col-5">
@@ -16,41 +16,167 @@
                     <p style="color: rgb(173, 173, 173); font-size:14px;">30 min ,60 rolling days</p>
                 </h6>
             </div>
-            <div class="col-2 offset-3">
-                <button class="btn btn-default" style="margin-left: 3em;">Cancel</button>
-            </div>
-            <div class="col-2">
-                <button style="color: #fff; margin-left: -1em;" class=" btn btn-primary " [routerLink]="['/home/schedule']">Next</button>
-            </div>
         </div>
     </div>
     <div class="card-body">
         <div class="col-md-3">
             <h6>Event Duration *</h6>
         </div>
-        <div class="col-md-2 mt-3">
+        <div class="col-md-12">
+            <ul class="pagination pagination-lg">
+                <li class="page-item"><a class="page-link">15<p>min</p></a></li>
+                <li class="page-item"><a class="page-link">30<p>min</p></a></li>
+                <li class="page-item"><a class="page-link">45<p>min</p></a></li>
+                <li class="page-item"><a class="page-link">60<p>min</p></a></li>
+                <li><input name="custom_duration" data-value="" placeholder="--" type="number" tabindex="-1" style="width:50%; height: 50px; margin-left: 20px;">
+                    <div class="desc hidden-phone " style="margin-top: -2em; margin-left: 4em; font-size: 14px; color: rgb(179,179,179)">min</div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-2 mt-4 ">
             <h6> Date Range * :</h6>
         </div>
-        <div class="col-md-8">
-            <p>Events can be scheduled over 60 rolling days <a href="">Edit</a></p>
+        <div class="col-md-8 ">
+            <p>Events can be scheduled over 60 rolling days <a href=" ">Edit</a></p>
         </div>
 
-        <div class="col-md-5 mt-3">
+        <div class="col-md-5 mt-4 ">
             <h6> Event TimeZone * :</h6>
         </div>
-        <div class="col-md-12">
-            <p>You are in india,Sri Lanka Time, Your invitees will see your availability in their local time Zone. <a href="">Edit</a></p>
+        <div class="col-md-12 ">
+            <p>You are in india,Sri Lanka Time, Your invitees will see your availability in their local time Zone. <a href=" ">Edit</a></p>
         </div>
 
-        <div class="col-md-5 mt-3">
+        <div class="col-md-5 mt-4 ">
             <h6>Availability * :</h6>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 ">
             <p>Set your available Hours, When people can schedule with you.</p>
         </div>
     </div>
-    <div class="card mb-5 col-md-10 offset-1">
-        <div class="card-header">
+    <div class="card mb-5 col-md-10 " style="margin-left: 40px; ">
+        <div class="card-header ">
+            <div class="row ">
+                <button class="btn btn-default " style="color: rgb(144, 142, 142); background-color: #fff; ">Hours</button>
+                <button class="btn btn-default " style="color: rgb(144, 142, 142); margin-left:10px; background-color: #fff; ">Advance</button>
+            </div>
+        </div>
+        <div class="card-body ">
+            <div class="col-md-5 ">
+                <h6 style="margin-left: -12px; ">Availability increments *</h6>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <p>Set the frequency of available time slots for your invitees.</p>
+                </div>
+                <div class="col-md-6 ">
+                    <p>Show availability in increments of </p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 mt-3 offset-6 ">
+                    <select class="form-control " id="Skills " name="Clients " required>
+                            <option>0 min</option>    
+                            <option>5 min</option>
+                            <option>10 min</option>
+                            <option>15 min</option>
+                            <option>30  min</option> 
+                            <option>45 min</option>
+                            <option>60 min</option>
+                     </select>
+                </div>
+            </div>
+
+            <div class="col-md-5 ">
+                <h6 style="margin-left: -12px; ">Availability increments *</h6>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <p>Set the frequency of available time slots for your invitees.</p>
+                </div>
+                <div class="col-md-6 ">
+                    <p>Show availability in increments of </p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 offset-6 ">
+                    <input type="number " class="form-control " style="width: 10em; width: 5em; ">
+                </div>
+            </div>
+
+            <div class="col-md-5 ">
+                <h6 style="margin-left: -12px; ">Minimum Scheduling Notice *</h6>
+            </div>
+            <div class="row ">
+                <div class="col-md-5 ">
+                    <p>Using this to prevent last Minute events.</p>
+                </div>
+                <div class="col-md-3 offset-1 ">
+                    <p>prevent events less than</p>
+                </div>
+                <div class="col-md-1 ">
+                    <input type="number " class="form-control " style="width: 10em; width: 5em; margin-left: -2em; ">
+                </div>
+                <div class="col-md-2 ">
+                    <p>hours away.</p>
+                </div>
+            </div>
+
+            <div class="col-md-5 mt-3 ">
+                <h6 style="margin-left: -12px; ">Events Buffers *</h6>
+            </div>
+            <div class="row ">
+                <div class="col-md-5 ">
+                    <p>
+                        Use this to set aside preparation, rest or travel time.
+                    </p>
+                </div>
+                <div class="col-md-3 offset-1 ">
+                    <p>Buffer before event</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 offset-6 ">
+                    <select class="form-control " required>
+                            <option>0 min</option>    
+                            <option>5 min</option>
+                            <option>10 min</option>
+                            <option>15 min</option>
+                            <option>30  min</option> 
+                           <option>45 min</option>
+                           <option>60 min</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-md-3 mt-3 offset-6 ">
+                    <p>Buffer after event</p>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 offset-6 ">
+                    <select class="form-control " required>
+                            <option>0 min</option>    
+                            <option>5 min</option>
+                            <option>10 min</option>
+                            <option>15 min</option>
+                            <option>30  min</option> 
+                            <option>45 min</option>
+                            <option>60 min</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer ">
+        <div class="row ">
+            <div class="col-2 offset-6 ">
+                <button class="btn btn-default " style="margin-left: 3em; " [routerLink]="[ '/home/new'] ">Cancel</button>
+            </div>
+            <div class="col-2 ">
+                <button style="color: #fff; margin-left: -1em; " class=" btn btn-primary " [routerLink]="[ '/home/new'] ">Save & Close</button>
+            </div>
         </div>
     </div>
 </div>

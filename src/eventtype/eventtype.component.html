@@ -17,7 +17,7 @@
             <p style="color: rgb(57, 161, 231);">bhushanshirudre95@gmail.com</p>
             <div class="dropdown-menu">
                 <i class=" dropdown-item"><a  class="fa fa-paperclip"></a> Copy Link</i>
-                <i class="dropdown-item"><a  class="fa fa-code"></a> Embed</i>
+                <i class="dropdown-item" data-toggle="modal" data-target="#myModal"><a  class="fa fa-code"></a> Embed</i>
             </div>
         </li>
     </div>
@@ -25,3 +25,44 @@
         <button class="fa fa-plus form-control" [routerLink]="['/home/new']"> New Event Type</button>
     </div>
 </div>
+
+<div class="row">
+    <div class="card offset-2" style="width: 18em; height: 5em;">
+        <div class="row">
+            <div class="col-md-8 mt-2">
+                <a style="font-size: 15px; margin-left:30px; ">30 Minute Meeting</a>
+            </div>
+            <div class="offset-2 mt-2">
+                <a style="font-size:20px; cursor: pointer; color: rgb(179, 179,179)" class="fa fa-gear "></a>
+            </div>
+            <div class="mt-1">
+                <a style="font-size:14px;margin-left: 5px; cursor: pointer;color: rgb(179, 179,179)" class="fa fa-angle-down "></a>
+            </div>
+        </div>
+        <p style="margin-left:30px; font-size: 12px; color: rgb(179, 179,179) ">One-On-One 30Mins</p>
+    </div>
+
+    <div class="modal fade " id="myModal ">
+        <div class="modal-dialog modal-md ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h4 class="modal-title ">Popup Widget </h4>
+                    <button type="button " class="close " data-dismiss="modal ">&times;</button>
+                </div>
+                <div class="modal-body ">
+                    <div class="col-md-5 offset-1 " style="margin-top: -2em; ">
+                        <img src="assets/1.jpg ">
+                    </div>
+                    <h6 class="offset-1 "> Calendly Page *</h6>
+                    <h6 class="offset-1 "> Text Link *</h6>
+                    <input type="text " class="form-control offset-1 " style="width: 80%; " value="Schedule time with me ">
+                    <div class="col-md-10 offset-1 mt-3 ">
+                        <p>Copy and paste this code into your website's HTML where you would like to see it.</p>
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-danger " data-dismiss="modal ">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

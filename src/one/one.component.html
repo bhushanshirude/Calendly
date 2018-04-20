@@ -14,12 +14,6 @@
             <div class="col-5">
                 <h6> What event is this?</h6>
             </div>
-            <div class="col-2 offset-3">
-                <button class="btn btn-default">Cancel</button>
-            </div>
-            <div class="col-2">
-                <button style="color: #fff; margin-left: 1em;" class=" btn btn-primary " [routerLink]="['/home/schedule']">Next</button>
-            </div>
         </div>
     </div>
     <div class="card-body">
@@ -56,6 +50,15 @@
         <div class="col-10 mb-5">
             <h6>Event color * :</h6>
         </div>
-
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-2 offset-6">
+                <button class="btn btn-default" [routerLink]="['/home/new']">Cancel</button>
+            </div>
+            <div class="col-2">
+                <button style="color: #fff; " class="btn btn-primary" [routerLink]="[ '/home/schedule'] ">Next</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -8,3 +8,60 @@
         </div>
     </div>
 </div>
+<div class="card col-md-8 offset-2 mt-5">
+    <div class="card-header">
+        <div class="row mt-1">
+            <div class="col-5">
+                <h6> What event is this?</h6>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Enter Event Name *">
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Add Location *">
+                <p style="color: rgb(190, 190, 190)">eg. Joe's Coffee, I'll call you.GoToMeeting, let invitee</p>
+            </div>
+            <div class="col-6 mt-3">
+                <input type="text" class="form-control" placeholder="Event link *">
+            </div>
+            <div class="col-8 mt-4">
+                <textarea class="form-control" placeholder="Description/Instructions *"></textarea>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-5" style="margin-left: 20px;">
+                <h6>Select Any One * :</h6>
+            </div>
+            <div class="col-12 offset-3">
+                <label class="container">Display location while booking
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                <label class="container">Display location only after confirmation
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+            </div>
+        </div>
+        <div class="col-10 mb-5">
+            <h6>Max invitees in a spot * :</h6>
+        </div>
+        <div class="col-md-5">
+            <input type="number" class="form-control" style="width:10em; margin-top: -1em;">
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-2 offset-6">
+                <button class="btn btn-default" [routerLink]="['/home/new']">Cancel</button>
+            </div>
+            <div class="col-2">
+                <button style="color: #fff; " class="btn btn-primary" [routerLink]="[ '/home/schedule'] ">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
