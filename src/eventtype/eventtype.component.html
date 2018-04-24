@@ -15,39 +15,49 @@
         <li class="nav-item ">
             <span data-toggle="dropdown" style="margin-left: -1em;">Bhushan Shirude<b class="fa fa-angle-down"></b></span>
             <p style="color: rgb(57, 161, 231);">bhushanshirudre95@gmail.com</p>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" style="margin-top: -1px;">
                 <i class=" dropdown-item"><a  class="fa fa-paperclip"></a> Copy Link</i>
+                <hr style="margin-top: 0em; margin-bottom: 0em;">
                 <i class="dropdown-item" data-toggle="modal" data-target="#myModal"><a  class="fa fa-code"></a> Embed</i>
             </div>
         </li>
     </div>
-    <div class="col-sm-3 mt-4 offset-2">
-        <button class="fa fa-plus form-control" [routerLink]="['/home/new']"> New Event Type</button>
+    <div class="fa col-sm-3 mt-4 offset-2">
+        <button class="fa fa-plus form-control" (click)="event()"> New Event Type</button>
     </div>
 </div>
 
-<div class="row">
-    <div class="card offset-2" style="width: 18em; height: 5em;">
-        <div class="row">
-            <div class="col-md-8 mt-2">
-                <a style="font-size: 15px; margin-left:30px; ">30 Minute Meeting</a>
-            </div>
-            <div class="offset-2 mt-2">
-                <a style="font-size:20px; cursor: pointer; color: rgb(179, 179,179)" class="fa fa-gear "></a>
-            </div>
-            <div class="mt-1">
-                <a style="font-size:14px;margin-left: 5px; cursor: pointer;color: rgb(179, 179,179)" class="fa fa-angle-down "></a>
+<div class="card offset-2" style="width: 18em; height: 5em;">
+    <div class="row col-md-12">
+        <div class="col-sm-12 mt-2">
+            <a style="font-size: 15px; ">30 Minute Meeting</a>
+            <a style="margin-left:2em; font-size:20px; cursor: pointer; color: rgb(179, 179,179);" class="fa fa-gear"></a>
+            <span data-toggle="dropdown" style="margin-left: -6em;"><b class="fa fa-angle-down"></b></span>
+            <div class="dropdown-menu" style="margin-left:2em; margin-top: -1px;">
+                <i class=" dropdown-item"><a  class="fa fa-pencil" style="margin-right:1em; font-size: 15px;"></a>Edit</i>
+                <hr style="margin-top: 0em; margin-bottom: 0em;">
+                <i class=" dropdown-item"><a  class="fa fa-paperclip" style="margin-right:1em; font-size: 15px;"></a> Copy Link</i>
+                <hr style="margin-top: 0em; margin-bottom: 0em;">
+                <i class=" dropdown-item"><a  class="fa fa-clone" style="margin-right:1em; font-size: 15px;"></a> Clone</i>
+                <hr style="margin-top: 0em; margin-bottom: 0em;">
+                <i class=" dropdown-item"><a  class="fa fa-save" style="margin-right:1em; font-size: 15px;"></a> Save Template</i>
+                <hr style="margin-top: 0em; margin-bottom: 0em;">
+                <i class="dropdown-item" data-toggle="modal" data-target="#myModal"><a style="margin-right:1em; font-size: 15px; " class="fa fa-code"></a> Embed</i>
+                <hr style="margin-top: 0em; margin-bottom: 0em;">
+                <i class=" dropdown-item"><a  class="fa fa-trash "  style="margin-right:1em; font-size: 15px;"></a> Delete</i>
             </div>
         </div>
-        <p style="margin-left:30px; font-size: 12px; color: rgb(179, 179,179) ">One-On-One 30Mins</p>
+        <p style="margin-left:2em; font-size: 14px; color: rgb(179, 179,179) ">One-On-One 30Mins</p>
     </div>
+</div>
 
-    <div class="modal fade " id="myModal ">
-        <div class="modal-dialog modal-md ">
-            <div class="modal-content ">
+
+<div class="container">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header ">
                     <h4 class="modal-title ">Popup Widget </h4>
-                    <button type="button " class="close " data-dismiss="modal ">&times;</button>
                 </div>
                 <div class="modal-body ">
                     <div class="col-md-5 offset-1 " style="margin-top: -2em; ">
@@ -60,9 +70,8 @@
                         <p>Copy and paste this code into your website's HTML where you would like to see it.</p>
                     </div>
                 </div>
-                <div class="modal-footer ">
-                    <button type="button " class="btn btn-danger " data-dismiss="modal ">Close</button>
-                </div>
             </div>
         </div>
     </div>
+
+</div>

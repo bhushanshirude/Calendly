@@ -39,3 +39,13 @@
 .dropdown-menu a {
     font-size: 24px;
 }
+
+.card:hover {
+    border: solid 2px #00a2ff;
+}
+
+.fa :hover {
+    border: solid 2px #00a2ff;
+    width: 10em;
+    height: 40px;
+}

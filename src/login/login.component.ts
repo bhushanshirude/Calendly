@@ -11,8 +11,6 @@ export class LoginComponent implements OnInit {
   private userData;
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    
-    
   }
   
   ngOnInit() {
@@ -21,9 +19,12 @@ export class LoginComponent implements OnInit {
     
     this.HttpService.post("user/find", form.value).subscribe(
       resp => {
-        swal("Successfully Login", "Thanks for login", "success") 
+        swal("Successfully Login", "Thanks for login", "success")
+        
+        localStorage.setItem("user", JSON.stringify(resp.docs));
+              
+        this.userData = JSON.parse(localStorage.getItem("user"));
         this.router.navigate(['home/dash'])
-        console.log("=============Bhushan============",this.userData);
       },
       err => {
         swal("Error", "Enter wrong Email or password", "error")

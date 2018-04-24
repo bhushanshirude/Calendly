@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from '../signup/signup.component';
 import { httpService } from '../httpservice';
@@ -11,16 +11,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private userData;
-  constructor(private Httpservice: httpService, private router: Router) {
+  private userData: any = 0;
+  constructor(private Httpservice: httpService, private router: Router, private cdr: ChangeDetectorRef) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("==========userData========", this.userData)
+
+    console.log("============app Component===========", this.userData)
   }
   ngOnInit() {
   }
-  logout() {
 
-    localStorage.removeItem("user");
+  ngAfterViewInit() {
+    console.log("=======personalDetails========", this.userData)
+    this.router.events
+      .subscribe(resp => {
+        this.userData = localStorage.getItem("user");
+        if (this.userData) {
+          this.userData = JSON.parse(this.userData);
+          return true;
+        }
+        this.userData != 0;
+        return false;
+      })
+  }
+  logout() {
+    // localStorage.removeItem("user");
     localStorage.clear();
     this.router.navigate(['home'])
   }

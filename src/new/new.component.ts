@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router :Router) { }
 
   ngOnInit() {
   }
-
+  Event() {
+    this.router.navigate(['/home/event'])
+  }
+  create(){
+    this.router.navigate(['/home/one'])
+  }
+  Create(){
+    this.router.navigate(['home/group'])
+  }
 }
