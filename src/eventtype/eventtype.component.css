@@ -49,3 +49,13 @@
     width: 10em;
     height: 40px;
 }
+
+.card hr {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.dropdown-menu i a {
+    margin-right: 1em;
+    font-size: 15px;
+}

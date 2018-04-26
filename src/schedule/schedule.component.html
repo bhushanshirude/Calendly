@@ -24,13 +24,13 @@
         </div>
         <div class="col-md-12">
             <ul class="pagination pagination-lg">
-                <li class="page-item"><a class="page-link">15<p>min</p></a></li>
-                <li class="page-item"><a class="page-link">30<p>min</p></a></li>
-                <li class="page-item"><a class="page-link">45<p>min</p></a></li>
-                <li class="page-item"><a class="page-link">60<p>min</p></a></li>
-                <li><input name="custom_duration" data-value="" placeholder="--" type="number" tabindex="-1" style="width:50%; height: 50px; margin-left: 20px;">
+                <li class="page-item"><a class="page-link" name="Duration" (click)="userData['0'].personalDetails.Duration='15 min'">15<p>min</p></a></li>
+                <li class="page-item"><a class="page-link" name="Duration" (click)="userData['0'].personalDetails.Duration='30 min'">30<p>min</p></a></li>
+                <li class="page-item"><a class="page-link" name="Duration" (click)="userData['0'].personalDetails.Duration='45 min'">45<p>min</p></a></li>
+                <li class="page-item"><a class="page-link" name="Duration" (click)="userData['0'].personalDetails.Duration='60 min'">60<p>min</p></a></li>
+                <!-- <li><input name="custom_duration" data-value="" placeholder="--" type="number" tabindex="-1" style="width:50%; height: 50px; margin-left: 20px;">
                     <div class="desc hidden-phone " style="margin-top: -2em; margin-left: 4em; font-size: 14px; color: rgb(179,179,179)">min</div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="col-md-2 mt-4 ">
@@ -172,10 +172,10 @@
     <div class="card-footer ">
         <div class="row ">
             <div class="col-2 offset-6 ">
-                <button class="btn btn-default " style="margin-left: 3em; " [routerLink]="[ '/home/new'] ">Cancel</button>
+                <button class="btn btn-default " style="margin-left: 3em; " [routerLink]="[ '/home/one'] ">Back</button>
             </div>
             <div class="col-2 ">
-                <button style="color: #fff; margin-left: -1em; " class=" btn btn-primary " [routerLink]="[ '/home/new'] ">Save & Close</button>
+                <button style="color: #fff; margin-left: -1em; " class=" btn btn-primary " (click)="save()">Save & Close</button>
             </div>
         </div>
     </div>

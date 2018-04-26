@@ -24,3 +24,7 @@
     color: rgb(179, 179, 179);
     margin-left: 3em;
 }
+
+.pagination li {
+    cursor: pointer;
+}

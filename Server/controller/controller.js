@@ -52,7 +52,7 @@ module.exports = {
     },
 
     update: function(request, response) {
-
+        console.log("======update========", request.params.id);
         Model.findByIdAndUpdate(request.params.id, { $set: request.body },
             function(err, docs) {
                 if (err) {

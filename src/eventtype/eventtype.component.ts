@@ -10,7 +10,7 @@ export class EventtypeComponent implements OnInit {
 private userData;
   constructor(private router :Router) { 
     this.userData=JSON.parse(localStorage.getItem("user"));
-    console.log("=====Event Data =======",this.userData)
+    console.log("=====Event Data =======",this.userData['0'].personalDetails.FirstName)
   }
 
   ngOnInit() {
