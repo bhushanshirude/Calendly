@@ -9,6 +9,7 @@ import swal from 'sweetalert2';
 })
 export class OneComponent implements OnInit {
   private userData;
+  private meetingData;
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
   }
@@ -20,19 +21,22 @@ export class OneComponent implements OnInit {
     if (form.valid) {
       let oneData = {
         MeetingDetails: form.value,
-        "userId" :  this.userData['0']._id 
+        "userId": this.userData['0']._id
       }
-      this.HttpService.put("meeting", oneData).subscribe(
+      this.HttpService.post("meeting", oneData).subscribe(
         resp => {
-          console.log("=========Success========")
-          swal("Thanx ", "update Meeting Time", "success")
+          console.log("=========Success========", resp)
+          swal("Thanx ", "update Meeting Time", "success");
+          localStorage.setItem("meeting", JSON.stringify(resp.docs));
+          this.meetingData = JSON.parse(localStorage.getItem("meeting"));
+          console.log("=========Success========", this.meetingData)
           this.router.navigate(['home/schedule']);
         }, err => {
           console.log("=========Error=========")
         });
-        form.resetForm();
-        return true;
-      
+      form.resetForm();
+      return true;
+
     }
   }
   cancel() {

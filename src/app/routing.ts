@@ -12,7 +12,8 @@ import { NewComponent } from '../new/new.component';
 import { OneComponent } from '../one/one.component';
 import { GroupComponent } from '../group/group.component';
 import { ScheduleComponent } from '../schedule/schedule.component';
-
+import { MeetingscheduleComponent } from '../meetingschedule/meetingschedule.component';
+import { GroupscheduleComponent } from '../groupschedule/groupschedule.component';
 
 
 export const routes: Routes = [
@@ -30,7 +31,9 @@ export const routes: Routes = [
             {path:'new',component:NewComponent} ,
             {path:'one',component:OneComponent},
             {path:'group',component:GroupComponent},
-            {path:'schedule',component:ScheduleComponent}
+            {path:'schedule',component:ScheduleComponent},
+            {path:'event/meetingsch',component:MeetingscheduleComponent},
+            {path:'groupSchedule',component:GroupscheduleComponent}
         ]
     }
 ];

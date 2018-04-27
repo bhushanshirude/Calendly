@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <form #scheduleForm="ngForm" (ngSubmit)="save(scheduleForm,$event)" novalidate>
+    <form #groupForm="ngForm" (ngSubmit)="close(groupForm,$event)" novalidate>
         <div class="card-body">
             <div class="col-md-3">
                 <h6>Event Duration *</h6>
@@ -74,14 +74,14 @@
                 <div class="row ">
                     <div class="col-md-6 mt-3 offset-6 ">
                         <select class="form-control " id="Skills " name="Availability" [(ngModel)]="meetingData.MeetingDetails.Availability" #Availability="ngModel" required>
-                            <option>0 min</option>    
-                            <option>5 min</option>
-                            <option>10 min</option>
-                            <option>15 min</option>
-                            <option>30  min</option> 
-                            <option>45 min</option>
-                            <option>60 min</option>
-                     </select>
+                          <option>0 min</option>    
+                          <option>5 min</option>
+                          <option>10 min</option>
+                          <option>15 min</option>
+                          <option>30  min</option> 
+                          <option>45 min</option>
+                          <option>60 min</option>
+                   </select>
                     </div>
                 </div>
 
@@ -136,14 +136,14 @@
                 <div class="row ">
                     <div class="col-md-6 offset-6 ">
                         <select class="form-control " required>
-                            <option>0 min</option>    
-                            <option>5 min</option>
-                            <option>10 min</option>
-                            <option>15 min</option>
-                            <option>30  min</option> 
-                           <option>45 min</option>
-                           <option>60 min</option>
-                    </select>
+                          <option>0 min</option>    
+                          <option>5 min</option>
+                          <option>10 min</option>
+                          <option>15 min</option>
+                          <option>30  min</option> 
+                         <option>45 min</option>
+                         <option>60 min</option>
+                  </select>
                     </div>
                 </div>
 
@@ -155,14 +155,14 @@
                 <div class="row ">
                     <div class="col-md-6 offset-6 ">
                         <select class="form-control " required>
-                            <option>0 min</option>    
-                            <option>5 min</option>
-                            <option>10 min</option>
-                            <option>15 min</option>
-                            <option>30  min</option> 
-                            <option>45 min</option>
-                            <option>60 min</option>
-                    </select>
+                          <option>0 min</option>    
+                          <option>5 min</option>
+                          <option>10 min</option>
+                          <option>15 min</option>
+                          <option>30  min</option> 
+                          <option>45 min</option>
+                          <option>60 min</option>
+                  </select>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,11 @@ routes.put("/user/:id", users.update);
 routes.post("/user/find", users.findData);
 
 
-routes.put("/meeting", meeting.update)
+routes.post("/meeting", meeting.create)
+
+// routes.put("/meeting", meeting.update)
+
+routes.put("/meeting/:id", meeting.update);
 
 
 module.exports = routes;

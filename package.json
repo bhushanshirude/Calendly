@@ -21,8 +21,13 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "amazing-time-picker": "^1.5.3",
+    "angular2-datetimepicker": "^1.1.1",
     "core-js": "^2.4.1",
+    "ng2-simple-timepicker": "^0.1.11",
+    "ng2-sweetalert2": "0.0.8",
     "rxjs": "^5.5.6",
+    "sweetalert2": "^7.19.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

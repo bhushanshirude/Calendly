@@ -4,7 +4,7 @@
             <button class="form-control" [routerLink]="['/home/event']"><i class="fa fa-angle-left"></i>  Event Types</button>
         </div>
         <div class="col-md-4 offset-2">
-            <h5>Add Group Event Type</h5>
+            <h5>Add One-on-One Event Type</h5>
         </div>
     </div>
 </div>
@@ -16,52 +16,53 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Enter Event Name *">
+    <form #groupForm="ngForm" (ngSubmit)="next(groupForm,$event)" novalidate>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Enter Event Name *" name="Event" ngModel #Event="ngModel" required>
+                    <small class="text-danger" *ngIf="groupForm.submitted && Event.invalid">Event Invalid</small>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Add Location *" name="Location" ngModel #Location="ngModel">
+                    <p style="color: rgb(190, 190, 190)">eg. Joe's Coffee, I'll call you.GoToMeeting, let invitee</p>
+                </div>
+                <div class="col-6 mt-3">
+                    <input type="text" class="form-control" placeholder="Event link *" name="Link" ngModel #Link="ngModel">
+                </div>
+                <div class="col-8 mt-4">
+                    <textarea class="form-control" placeholder="Description/Instructions *" name="Description" ngModel #Description="ngModel"></textarea>
+                </div>
             </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Add Location *">
-                <p style="color: rgb(190, 190, 190)">eg. Joe's Coffee, I'll call you.GoToMeeting, let invitee</p>
+            <div class="row mt-4">
+                <div class="col-5" style="margin-left: 20px;">
+                    <h6>Select Any One * :</h6>
+                </div>
+                <div class="col-12 offset-3">
+                    <label class="container" name="option">Display location while booking
+                        <input type="radio" >
+                        <span class="checkmark" name="option"></span>
+                    </label>
+                    <label class="container">Display location only after confirmation
+                        <input type="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
             </div>
-            <div class="col-6 mt-3">
-                <input type="text" class="form-control" placeholder="Event link *">
-            </div>
-            <div class="col-8 mt-4">
-                <textarea class="form-control" placeholder="Description/Instructions *"></textarea>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-5" style="margin-left: 20px;">
-                <h6>Select Any One * :</h6>
-            </div>
-            <div class="col-12 offset-3">
-                <label class="container">Display location while booking
-                            <input type="radio" name="radio">
-                            <span class="checkmark"></span>
-                        </label>
-                <label class="container">Display location only after confirmation
-                            <input type="radio" name="radio">
-                            <span class="checkmark"></span>
-                        </label>
-            </div>
-        </div>
-        <div class="col-10 mb-5">
-            <h6>Max invitees in a spot * :</h6>
-        </div>
-        <div class="col-md-5">
-            <input type="number" class="form-control" style="width:10em; margin-top: -1em;">
-        </div>
-    </div>
-    <div class="card-footer">
-        <div class="row">
-            <div class="col-2 offset-6">
-                <button class="btn btn-default" [routerLink]="['/home/new']">Cancel</button>
-            </div>
-            <div class="col-2">
-                <button style="color: #fff; " class="btn btn-primary" [routerLink]="[ '/home/schedule'] ">Next</button>
+            <div class="col-10 mb-5">
+                <h6>Event color * :</h6>
             </div>
         </div>
-    </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-2 offset-6">
+                    <button class="btn btn-default" (click)="cancel()">Cancel</button>
+                </div>
+                <div class="col-2">
+                    <button type="submit" style="color: #fff; " class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

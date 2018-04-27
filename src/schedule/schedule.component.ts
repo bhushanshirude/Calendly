@@ -9,21 +9,23 @@ import swal from 'sweetalert2';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
-  private userData;
+  private meetingData;
   constructor(private router: Router, private HttpService: httpService) {
-    this.userData = JSON.parse(localStorage.getItem("user"));
+    this.meetingData = JSON.parse(localStorage.getItem("meeting"));
   }
 
   ngOnInit() {
   }
   save() {
-    // this.HttpService.put("user/" + this.userData['0']._id ,this.userData['0']).subscribe(
-    //   resp=>{
-    //   console.log("=========Success=========",resp)
-    //   swal("Update","Meeting Schedule Update","success");
-    // },err=>{
-    //   console.log("====Error===",err)
-    // })
-    // this.router.navigate(['home/new'])
+    this.HttpService.put("meeting/" + this.meetingData._id, this.meetingData).subscribe(
+      resp => {
+        console.log("===========HttpServices============", )
+        swal("Thanx ", "Meeting Schedule Update", "success");
+        this.router.navigate(['home/dash'])
+      },
+      err => {
+        swal("Error", "Meeting Schedule Not Update", "error")
+      })
+
   }
 }

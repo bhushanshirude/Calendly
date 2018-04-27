@@ -1,3 +1,5 @@
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { routing } from './routing'
@@ -18,6 +20,8 @@ import { NewComponent } from '../new/new.component';
 import { OneComponent } from '../one/one.component';
 import { GroupComponent } from '../group/group.component';
 import { ScheduleComponent } from '../schedule/schedule.component';
+import { MeetingscheduleComponent } from '../meetingschedule/meetingschedule.component';
+import { GroupscheduleComponent } from '../groupschedule/groupschedule.component';
 
 
 @NgModule({
@@ -35,15 +39,19 @@ import { ScheduleComponent } from '../schedule/schedule.component';
     OneComponent,
     GroupComponent,
     ScheduleComponent,
+    MeetingscheduleComponent,
+    GroupscheduleComponent,
 
   ],
   imports: [
     BrowserModule,
     routing,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularDateTimePickerModule,
+    AmazingTimePickerModule
   ],
-  providers: [httpService],
+  providers: [httpService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

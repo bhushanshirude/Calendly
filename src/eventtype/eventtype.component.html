@@ -14,7 +14,7 @@
     <div class="col-sm-4 mt-3">
         <li class="nav-item ">
             <span data-toggle="dropdown" style="margin-left: -1em;">{{this.userData['0'].personalDetails.FirstName}} {{this.userData['0'].personalDetails.LastName}}<b class="fa fa-angle-down"></b></span>
-            <p style="color: rgb(57, 161, 231);">{{this.userData['0'].personalDetails.Email}}</p>
+            <p style="color: rgb(57, 161, 231); cursor: pointer;" [routerLink]="['meetingsch']">{{this.userData['0'].personalDetails.Email}}</p>
             <div class="dropdown-menu" style="margin-top: -1px;">
                 <i class=" dropdown-item"><a  class="fa fa-paperclip"></a> Copy Link</i>
                 <hr style="margin-top: 0em; margin-bottom: 0em;">
@@ -27,12 +27,12 @@
     </div>
 </div>
 
-<div class="card offset-2" style="width: 19em; height: 6em;">
+<div class="card offset-2" style="width: 18em; height: 5em;">
     <div class="row col-md-12">
         <div class="col-sm-12 mt-2">
             <a style="font-size: 15px;">30 Minute Meeting</a>
-            <a style="margin-left:3em; font-size:20px; cursor: pointer; color: rgb(179, 179,179);" class="fa fa-gear"></a>
-            <span data-toggle="dropdown" style="margin-left: -6em;"><b class="fa fa-angle-down"></b></span>
+            <a style="margin-left:3em; font-size:20px; cursor: pointer; color:#24a56f;" class="fa fa-gear"></a>
+            <span data-toggle="dropdown" style="margin-left: -7em;"><b class="fa fa-angle-down"></b></span>
             <div class="dropdown-menu" style="margin-left:2em; margin-top: -1px;">
                 <i class=" dropdown-item"><a  class="fa fa-pencil"></a>Edit</i>
                 <hr>
@@ -47,11 +47,10 @@
                 <i class=" dropdown-item"><a class="fa fa-trash"></a> Delete</i>
             </div>
         </div>
-        <p style="margin-left:2em; font-size: 14px; color: rgb(179, 179,179) ">One-On-One 30Mins</p>
-        <a style="font-size:15px; margin-left:1em; margin-top: -15px;" href="#">{{userData['0'].personalDetails.Email}}</a>
+        <p style="margin-left:2em; font-size: 14px; color: rgb(179, 179,179); margin-top:-10px;">One-On-One 30Mins</p>
+        <a style="font-size:15px; margin-left:1em; margin-top: -25px; " [routerLink]="['meetingsch']">{{userData['0'].personalDetails.Email}}</a>
     </div>
 </div>
-
 
 <div class="container">
     <div class="modal fade" id="myModal">
