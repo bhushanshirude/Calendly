@@ -22,6 +22,7 @@ import { GroupComponent } from '../group/group.component';
 import { ScheduleComponent } from '../schedule/schedule.component';
 import { MeetingscheduleComponent } from '../meetingschedule/meetingschedule.component';
 import { GroupscheduleComponent } from '../groupschedule/groupschedule.component';
+import { MessagesendComponent } from '../messagesend/messagesend.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { GroupscheduleComponent } from '../groupschedule/groupschedule.component
     ScheduleComponent,
     MeetingscheduleComponent,
     GroupscheduleComponent,
+    MessagesendComponent,
 
   ],
   imports: [

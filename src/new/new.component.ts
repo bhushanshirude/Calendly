@@ -13,12 +13,12 @@ export class NewComponent implements OnInit {
   ngOnInit() {
   }
   Event() {
-    this.router.navigate(['/home/event'])
+    this.router.navigate(['/home/event']);
   }
   create(){
-    this.router.navigate(['/home/one'])
+    this.router.navigate(['/home/one']);
   }
   Create(){
-    this.router.navigate(['home/group'])
+    this.router.navigate(['home/group']);
   }
 }
