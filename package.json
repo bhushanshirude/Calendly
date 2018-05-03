@@ -23,6 +23,7 @@
     "@angular/router": "^5.2.0",
     "amazing-time-picker": "^1.5.3",
     "angular2-datetimepicker": "^1.1.1",
+    "angular2-text-mask": "^9.0.0",
     "core-js": "^2.4.1",
     "ng2-simple-timepicker": "^0.1.11",
     "ng2-sweetalert2": "0.0.8",

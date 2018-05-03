@@ -3,6 +3,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { AmazingTimePickerService } from 'amazing-time-picker';
 import { httpService } from '../httpservice';
 import { Router } from '@angular/router';
+import { TextMaskModule } from 'angular2-text-mask/dist/angular2TextMask';
 
 
 @Component({
@@ -11,12 +12,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./meetingschedule.component.css']
 })
 export class MeetingscheduleComponent implements OnInit {
+  public myModel = ''
+  public mask = [/\d/,/\d/,'.',/\d/, /\d/,'.',/\d/,/\d/,];
   private userData;
   private meetingData;
   date: Date = new Date();
   settings = {
     bigBanner: true,
-    timePicker: true,
+    timePicker: false,
     format: 'dd-MM-yyyy',
     defaultOpen: false
   }
@@ -35,7 +38,7 @@ export class MeetingscheduleComponent implements OnInit {
   ngOnInit() {
   }
   confirm() {
-    this.HttpService.put("meeting/" + this.meetingData._id, this.meetingData).subscribe(
+    this.HttpService.put("meeting/" + this.meetingData._id,this.meetingData).subscribe(
       resp => {
           console.log("=========Response===========",resp)
           this.router.navigate(['home/message'])

@@ -12,51 +12,22 @@
     <p class="fa fa-comments-o"><a>Description</a></p><br>
     <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a>Mumbai</a></p>
 </div>
+<span class="offset-4">Select Date & Time </span>
 
-
-<span class="offset-5">Select Date & Time </span>
-<div class="row col-md-6 offset-6">
+<div class="row col-md-8" style="margin-left: 28em;">
     <div class="col-md-4">
-        <angular2-date-picker name="Date" [(ngModel)]="date" #Date="ngModel" [settings]="settings"></angular2-date-picker>
+        <angular2-date-picker name="Date" [(ngModel)]="date" [(ngModel)]="meetingData.MeetingDetails.Date" #Date="ngModel" [settings]="settings"></angular2-date-picker>
     </div>
     <div class="col-md-2">
-        <input class="form-control" style="width:200px;" atp-time-picker value="12:00" name="Time" ngModel #Time="ngModel" placeholder=" Select Meeting Time">
+        <input style="width: 7em;" id="1 " name="Time" [(ngModel)]="meetingData.MeetingDetails.Time " #Time="ngModel" [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" />
+    </div>
+    <div class="col-md-1">
+        <select class="form-control" style="margin-left:-33px; width:72px" name="hours" [(ngModel)]="meetingData.MeetingDetails.hours" #Time="ngModel">
+            <option>AM</option>
+            <option>PM</option>
+        </select>
     </div>
 </div>
 <div class="row col-md-2 mt-3">
     <button class="btn btn-primary" (click)="confirm()">Confirm</button>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="row">
-    <span style="margin-left: 14em;"> -Today-</span>
-</div> -->
-
-<!-- <div class="pagination mt-4">
-    <div href="#" style="margin-left:6em;" class="fa fa-angle-left mt-3"></div>
-    <p class="datepicker mt-4">
-        <a>1</a>
-        <a>2</a>
-        <a>3</a>
-        <a>4</a>
-        <a>5</a>
-        <a>6</a>
-        <a>7</a>
-    </p>
-    <div href="#" class="fa fa-angle-right mt-3"></div>
-</div> -->

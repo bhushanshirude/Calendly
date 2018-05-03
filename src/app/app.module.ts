@@ -2,6 +2,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask/dist/angular2TextMask';
 import { routing } from './routing'
 import { NgModule } from '@angular/core';
 import { httpService } from '../httpservice';
@@ -43,6 +44,7 @@ import { MessagesendComponent } from '../messagesend/messagesend.component';
     MeetingscheduleComponent,
     GroupscheduleComponent,
     MessagesendComponent,
+    
 
   ],
   imports: [
@@ -51,7 +53,8 @@ import { MessagesendComponent } from '../messagesend/messagesend.component';
     FormsModule,
     HttpModule,
     AngularDateTimePickerModule,
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    TextMaskModule
   ],
   providers: [httpService ],
   bootstrap: [AppComponent]

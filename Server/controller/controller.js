@@ -102,27 +102,27 @@ module.exports = {
     //     })
     // },
 
-    // send: function(request, response) {
-    //     // console.log("==============Status===============", request.params.id)
-    //     Model.findOne({ _id: request.params.id },
-    //         function(err, doc) {
-    //             if (err || !doc) {
-    //                 response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
-    //                 return false;
-    //             }
-    //             // if user found
-    //             var email = doc.personalDetails.Email;
-    //             var url = config.WEBURL;
-    //             var msg = "Hello " + doc.personalDetails.FirstName + ", you are select in second round you can Accept or Reject Invitation of second Round.<br>";
-    //             msg += "<a href='" + url + "'>Accpet</a> <br>";
-    //             msg += "<a href='" + url + "'>Reject</a> <br>";
-    //             if (sendEmail(email, "status", msg)) {
-    //                 response.status(500).json({ status: "Error", message: "Mail count not be sent! Please try after some time", docs: "" });
-    //                 return false;
-    //             }
-    //             response.status(200).json({ status: "Ok", message: "Mail has been sent!", docs: "" });
-    //         })
-    // },
+    send: function(request, response) {
+        // console.log("==============Status===============", request.params.id)
+        Model.findOne({ _id: request.params.id },
+            function(err, doc) {
+                if (err || !doc) {
+                    response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
+                    return false;
+                }
+                // if user found
+                var email = doc.personalDetails.Email;
+                var url = config.WEBURL;
+                var msg = "Hello " + doc.personalDetails.FirstName + ", you are select in second round you can Accept or Reject Invitation of second Round.<br>";
+                msg += "<a href='" + url + "'>Accpet</a> <br>";
+                msg += "<a href='" + url + "'>Reject</a> <br>";
+                if (sendEmail(email, "status", msg)) {
+                    response.status(500).json({ status: "Error", message: "Mail count not be sent! Please try after some time", docs: "" });
+                    return false;
+                }
+                response.status(200).json({ status: "Ok", message: "Mail has been sent!", docs: "" });
+            })
+    },
 }
 
 function sendEmail(to, sub, msg) {
