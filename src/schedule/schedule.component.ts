@@ -12,6 +12,7 @@ export class ScheduleComponent implements OnInit {
   private meetingData;
   constructor(private router: Router, private HttpService: httpService) {
     this.meetingData = JSON.parse(localStorage.getItem("meeting"));
+    console.log("==========userId=========",this.meetingData.userId)
   }
 
   ngOnInit() {

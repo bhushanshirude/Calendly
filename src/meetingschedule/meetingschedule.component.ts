@@ -4,7 +4,7 @@ import { AmazingTimePickerService } from 'amazing-time-picker';
 import { httpService } from '../httpservice';
 import { Router } from '@angular/router';
 import { TextMaskModule } from 'angular2-text-mask/dist/angular2TextMask';
-
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-meetingschedule',
@@ -13,7 +13,7 @@ import { TextMaskModule } from 'angular2-text-mask/dist/angular2TextMask';
 })
 export class MeetingscheduleComponent implements OnInit {
   public myModel = ''
-  public mask = [/\d/,/\d/,'.',/\d/, /\d/,'.',/\d/,/\d/,];
+  public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
   private userData;
   private meetingData;
   date: Date = new Date();
@@ -25,9 +25,7 @@ export class MeetingscheduleComponent implements OnInit {
   }
   constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("==========UserData=========", this.userData);
-    this.meetingData=JSON.parse(localStorage.getItem("meeting"));
-    console.log("========meetingData======",this.meetingData);
+    console.log("==========UserData=========", this.userData['0']._id);
   }
   open() {
     const amazingTimePicker = this.atp.open();
@@ -35,15 +33,9 @@ export class MeetingscheduleComponent implements OnInit {
       console.log(time);
     });
   }
-  ngOnInit() {
-  }
+  ngOnInit() {}
   confirm() {
-    this.HttpService.put("meeting/" + this.meetingData._id,this.meetingData).subscribe(
-      resp => {
-          console.log("=========Response===========",resp)
-          this.router.navigate(['home/message'])
-      }, err => {
-          console.log("===========Error===========",err)
-      });
+    swal("Thanx","Please Update time & Data","success")
+   this.router.navigate(['home/message']);
   }
 }

@@ -16,13 +16,13 @@
 
 <div class="row col-md-8" style="margin-left: 28em;">
     <div class="col-md-4">
-        <angular2-date-picker name="Date" [(ngModel)]="date" [(ngModel)]="meetingData.MeetingDetails.Date" #Date="ngModel" [settings]="settings"></angular2-date-picker>
+        <angular2-date-picker name="Date" [(ngModel)]="date" [settings]="settings"></angular2-date-picker>
     </div>
     <div class="col-md-2">
-        <input style="width: 7em;" id="1 " name="Time" [(ngModel)]="meetingData.MeetingDetails.Time " #Time="ngModel" [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" />
+        <input style="width: 7em;" id="1 " [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" />
     </div>
     <div class="col-md-1">
-        <select class="form-control" style="margin-left:-33px; width:72px" name="hours" [(ngModel)]="meetingData.MeetingDetails.hours" #Time="ngModel">
+        <select class="form-control" style="margin-left:-33px; width:72px">
             <option>AM</option>
             <option>PM</option>
         </select>

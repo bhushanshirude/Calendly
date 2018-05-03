@@ -12,21 +12,22 @@
         <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-comments-o mt-1"></a> feedback<br>
         <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-crosshairs mt-1"> </a> Pune
     </div>
-
     <div class="col-md-4 mt-5">
-        <div class="header">
-            <h6>Send Invitation</h6>
-        </div>
-        <div class="card-body">
-            <div class="col-md-12">
-                <input type="text" class="form-control" placeholder="Enter Name" name="Sname" ngModel #Sname="ngModel">
+        <form #signupForm="ngForm" (ngSubmit)="schedule(signupForm, $event)" novalidate>
+            <div class="header">
+                <h6>Send Invitation</h6>
             </div>
-            <div class="col-md-12 mt-4">
-                <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter Email Id" name="Semail" ngModel #Semail="ngModel">
+            <div class="card-body">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="Enter Name" name="Sname" ngModel #Sname="ngModel">
+                </div>
+                <div class="col-md-12 mt-4">
+                    <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter Email Id" name="Semail" ngModel #Semail="ngModel">
+                </div>
+                <div class="footer mb-3 offset-2 mt-4">
+                    <button class="btn btn-primary" type="Submit">Schedule Event</button>
+                </div>
             </div>
-        </div>
-        <div class="footer mb-3 offset-2 mt-2">
-            <button class="btn btn-primary" (click)="schedule()">Schedule Event</button>
-        </div>
+        </form>
     </div>
 </div>

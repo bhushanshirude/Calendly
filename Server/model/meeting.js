@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var Model = new Schema({
     "MeetingDetails": Object,
-    "userId": String
+    "userId": String,
 }, {
     collation: "meetings"
 });

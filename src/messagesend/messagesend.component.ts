@@ -9,8 +9,12 @@ import { httpService } from '../httpservice';
   styleUrls: ['./messagesend.component.css']
 })
 export class MessagesendComponent implements OnInit {
-
-  constructor(private HttpService: httpService, private router: Router) { }
+  private userData;
+  private meetingData;
+  constructor(private HttpService: httpService, private router: Router) { 
+    this.userData=JSON.parse(localStorage.getItem("user"));
+    console.log("================InviData1=======",this.userData['0']._id)
+  }
 
   ngOnInit() {
   }
@@ -19,8 +23,17 @@ export class MessagesendComponent implements OnInit {
     this.router.navigate(['home/event/meetingsch']);
   }
   schedule(form: any, event: Event) {
-    // this.HttpService.get()
-    swal("Thanks", "Schedule Mail Has Been Send", "success")
+    let inviData ={
+      "InvitationDetails":form.value,
+      "UserId":this.userData['0']._id
+    }
+    this.HttpService.post("invitation",inviData).subscribe(
+      resp=>{
+        console.log("=======Success=========",resp)     
+        swal("Thanks", "Schedule Mail Has Been Send", "success")
+    },err=>{
+      console.log("=========Error=========",err)   
+    });
   }
 
 }

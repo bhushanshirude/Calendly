@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { httpService } from '../httpservice';
 
 @Component({
   selector: 'app-eventtype',
@@ -7,16 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./eventtype.component.css']
 })
 export class EventtypeComponent implements OnInit {
-private userData;
-  constructor(private router :Router) { 
-    this.userData=JSON.parse(localStorage.getItem("user"));
-    console.log("=====Event Data =======",this.userData['0'].personalDetails.FirstName)
+  private userData;
+  private meetingData;
+  constructor(private router: Router, private HttpServices: httpService) {
+    this.userData = JSON.parse(localStorage.getItem("user"));
+    console.log("=======JSONs========", this.userData['0']._id);
+    this.meetingData = JSON.parse(localStorage.getItem("meeting"));
+    console.log("=======JSON========", this.meetingData)
   }
-
   ngOnInit() {
   }
-  event(){
-   this.router.navigate(['/home/new'])
+  event() {
+
+    this.router.navigate(['/home/new'])
   }
 
 }
