@@ -15,6 +15,7 @@ import { ScheduleComponent } from '../schedule/schedule.component';
 import { MeetingscheduleComponent } from '../meetingschedule/meetingschedule.component';
 import { GroupscheduleComponent } from '../groupschedule/groupschedule.component';
 import { MessagesendComponent } from '../messagesend/messagesend.component';
+import { RescheduleComponent } from '../reschedule/reschedule.component';
 
 
 export const routes: Routes = [
@@ -35,7 +36,8 @@ export const routes: Routes = [
             {path:'schedule',component:ScheduleComponent},
             {path:'event/meetingsch',component:MeetingscheduleComponent},
             {path:'groupSchedule',component:GroupscheduleComponent},
-            {path:'message',component:MessagesendComponent}
+            {path:'message',component:MessagesendComponent},
+            {path:'reschedule/:_id',component:RescheduleComponent}
         ]
     }
 ];
