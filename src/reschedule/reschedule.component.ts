@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { httpService } from '../httpservice';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { AmazingTimePickerService } from 'amazing-time-picker';
+import { TextMaskModule } from 'angular2-text-mask/dist/angular2TextMask';
 import { Router, ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reschedule',
@@ -9,16 +13,34 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RescheduleComponent implements OnInit {
   private userId: string;
-  constructor(private HttpService: httpService, private router: Router, private activatedRoute: ActivatedRoute) {
+  private userData;
+  public myModel = ''
+  public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
+  date: Date = new Date();
+  settings = {
+    bigBanner: true,
+    timePicker: false,
+    format: 'dd-MM-yyyy',
+    defaultOpen: false
+  }
+  constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.userData = JSON.parse(localStorage.getItem("user"));
     activatedRoute.params.subscribe(param => {
       this.userId = param['_id'];
       console.log("=========res========", this.userId);
-      this.reschedule()
     })
+  }
+  open() {
+    const amazingTimePicker = this.atp.open();
+    amazingTimePicker.afterClose().subscribe(time => {
+      console.log(time);
+    });
   }
   ngOnInit() {
   }
-  reschedule() {
-      this.router.navigate(['/home/event/meetingsch']);
+  confirms() {
+    console.log("===========1234567========", this.userId);
   }
 }
+
+

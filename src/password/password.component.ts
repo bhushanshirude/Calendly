@@ -17,7 +17,7 @@ export class PasswordComponent implements OnInit {
     }
     ngOnInit() {
     }
-    update(form: any, event: Event) {
+    update(form: any, event: Event) {   
 
         if (form.valid) {
             this.HttpService.put("user/" + this.userData._id, this.userData).subscribe(resp => {

@@ -20,6 +20,6 @@ routes.get("/meeting/getall/:id", meeting.getall);
 
 
 routes.post("/invitation", invitation.create);
-routes.get("/invitation/:_id", invitation.getone);
+routes.put("/invitation/:id", invitation.update);
 
 module.exports = routes;

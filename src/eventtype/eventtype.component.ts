@@ -13,8 +13,6 @@ export class EventtypeComponent implements OnInit {
   constructor(private router: Router, private HttpServices: httpService) {
     this.userData = JSON.parse(localStorage.getItem("user"));
     console.log("=======JSONs========", this.userData['0']._id);
-    this.meetingData = JSON.parse(localStorage.getItem("meeting"));
-    console.log("=======JSON========", this.meetingData)
   }
   ngOnInit() {
   }

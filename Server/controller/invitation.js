@@ -27,14 +27,16 @@ module.exports = {
             response.status(200).json({ status: "Success", message: "Success", docs: '' });
         });
     },
-    getone: function(request, response) {
-        invitationModel.findOne({ "_id": request.params.id }, function(err, docs) {
-            if (err) {
-                response.status(500).json({ status: "Error", message: err, docs: '' });
-                return false;
-            }
-            response.status(200).json({ status: "Success", message: "Success", docs: docs });
-        })
+    update: function(request, response) {
+        // console.log("======update========", request.params.id);
+        Model.findByIdAndUpdate(request.params.id, { $set: request.body },
+            function(err, docs) {
+                if (err) {
+                    response.status(500).json({ status: "Error", message: err, docs: '' });
+                    return false;
+                }
+                response.status(200).json({ status: "Success", message: "Success", docs: docs });
+            })
     },
 }
 
