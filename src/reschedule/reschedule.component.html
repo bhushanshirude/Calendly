@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <a>{{userData['0'].personalDetails.FirstName}} {{userData['0'].personalDetails.LastName}}<p class="fa fa-angle-down" style="font-size: 15px;"></p></a>
+    <a>Dipak<p class="fa fa-angle-down" style="font-size: 15px;"></p></a>
 </div>
 <div class="card col-md-12 mt-2">
     <div class="row">
@@ -13,21 +13,22 @@
     <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a>Mumbai</a></p>
 </div>
 <span class="offset-4">Select Date & Time </span>
-
-<div class="row col-md-8" style="margin-left: 28em;">
-    <div class="col-md-4">
-        <angular2-date-picker name="Date" [(ngModel)]="date" [settings]="settings"></angular2-date-picker>
-    </div>
-    <div class="col-md-2">
-        <input style="width: 7em;" id="1 " [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" />
-    </div>
-    <div class="col-md-1">
-        <select class="form-control" style="margin-left:-33px; width:72px">
+<form #conForm="ngForm" (ngSubmit)="confirms(conForm, $event)" novalidate>
+    <div class="row col-md-8" style="margin-left: 28em;">
+        <div class="col-md-4">
+            <input type="date" class="form-control" name="Date" ngModel #Date="ngModel">
+        </div>
+        <div class="col-md-2">
+            <input style="width: 7em;" id="1 " [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" name="Time" ngModel #Time="ngModel" />
+        </div>
+        <div class="col-md-1">
+            <select class="form-control" style="margin-left:-33px; width:72px" name="Select" ngModel #Select="ngModel">
           <option>AM</option>
           <option>PM</option>
       </select>
+        </div>
     </div>
-</div>
-<div class="row col-md-2 mt-3">
-    <button class="btn btn-primary" (click)="confirms()">Confirm</button>
-</div>
+    <div class="row col-md-2 mt-3">
+        <button class="btn btn-primary" type="submit">Confirm</button>
+    </div>
+</form>

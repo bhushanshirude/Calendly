@@ -12,10 +12,8 @@ import swal from 'sweetalert2';
   styleUrls: ['./meetingschedule.component.css']
 })
 export class MeetingscheduleComponent implements OnInit {
-  public myModel = ''
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
   private userData;
-  private meetingData;
   date: Date = new Date();
   settings = {
     bigBanner: true,
@@ -25,7 +23,7 @@ export class MeetingscheduleComponent implements OnInit {
   }
   constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("==========UserData=========", this.userData['0']._id);
+    // console.log("==========Userid=========", this.userData['0']._id);
   }
   open() {
     const amazingTimePicker = this.atp.open();
@@ -33,9 +31,18 @@ export class MeetingscheduleComponent implements OnInit {
       console.log(time);
     });
   }
-  ngOnInit() {}
-  confirm() {
-    swal("Thanx","Please Update time & Data","success")
-   this.router.navigate(['home/message']);
-  }
+  ngOnInit() { }
+
+  confirm(form: any, event: Event) {
+    this.HttpService.put("user/" + this.userData['0']._id, this.userData['0']).subscribe(
+      resp => {
+        console.log("=======aaaaaaaaa=======", this.userData);
+        console.log("======sssssss========", resp)
+        swal("Thanx", "Please Update time & Data", "success")
+        this.router.navigate(['home/message']);
+      }, err => {
+        swal("Error", "Please Update time & Data", "error")
+      });
+    }
+    // return resetForm()
 }

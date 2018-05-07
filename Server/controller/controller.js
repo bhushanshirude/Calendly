@@ -52,14 +52,40 @@ module.exports = {
     },
 
     update: function(request, response) {
-        // console.log("======update========", request.params.id);
-        Model.findByIdAndUpdate(request.params.id, { $set: request.body },
+        Model.findByIdAndUpdate(request.params.id, { new: true }, {
+                $set: request.body
+            },
             function(err, docs) {
                 if (err) {
                     response.status(500).json({ status: "Error", message: err, docs: '' });
                     return false;
+                } else {
+                    response.status(200).json({ status: "Success", message: "Success", docs: docs });
+                    return true;
                 }
-                response.status(200).json({ status: "Success", message: "Success", docs: docs });
-            })
+            });
     },
+}
+
+function sendEmail(to, sub, msg) {
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'projectfinal81@gmail.com',
+            pass: 'project1'
+        }
+    });
+    var mailOptions = {
+        from: 'projectfinal81@gmail.com',
+        to: to,
+        subject: sub,
+        html: msg
+    };
+
+    transporter.sendMail(mailOptions, function(err) {
+        if (err) {
+            return false;
+        }
+        return true;
+    });
 }

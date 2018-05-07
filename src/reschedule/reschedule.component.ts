@@ -14,6 +14,7 @@ import swal from 'sweetalert2';
 export class RescheduleComponent implements OnInit {
   private userId: string;
   private userData;
+  private invitationData;
   public myModel = ''
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
   date: Date = new Date();
@@ -21,13 +22,12 @@ export class RescheduleComponent implements OnInit {
     bigBanner: true,
     timePicker: false,
     format: 'dd-MM-yyyy',
-    defaultOpen: false
+    defaultOpen: false,
   }
   constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.userData = JSON.parse(localStorage.getItem("user"));
     activatedRoute.params.subscribe(param => {
       this.userId = param['_id'];
-      console.log("=========res========", this.userId);
     })
   }
   open() {
@@ -38,8 +38,20 @@ export class RescheduleComponent implements OnInit {
   }
   ngOnInit() {
   }
-  confirms() {
-    console.log("===========1234567========", this.userId);
+  confirms(form: any, event: Event) {
+    event.preventDefault()
+    if (form.valid) {
+      let inviData = {
+        InvitationDetails: form.value
+      }
+      this.HttpService.put("invitation/" + this.userId, inviData).subscribe(
+        res => {
+          swal("verify", "update", "success");
+          console.log("=======Resp====",res)
+        }, err => {
+          swal("call", "data", "error");
+        });
+    }
   }
 }
 

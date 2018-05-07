@@ -13,16 +13,16 @@
     <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a>Mumbai</a></p>
 </div>
 <span class="offset-4">Select Date & Time </span>
-
 <div class="row col-md-8" style="margin-left: 28em;">
     <div class="col-md-4">
-        <angular2-date-picker name="Date" [(ngModel)]="date" [settings]="settings"></angular2-date-picker>
+        <input type="date" class="form-control" name="Date" [(ngModel)]="userData['0'].personalDetails.Date" #Date="ngModel">
+        <!-- <angular2-date-picker name="Date" [(ngModel)]="date" [settings]="settings"></angular2-date-picker> -->
     </div>
     <div class="col-md-2">
-        <input style="width: 7em;" id="1 " [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" />
+        <input style="width: 7em;" id="Time" [textMask]="{mask: mask} " name="userData['0'].personalDetails.Time" [(ngModel)]="userData['0'].personalDetails.Time" #Time="ngModel" type="text " class="form-control " placeholder="00.00.00" />
     </div>
     <div class="col-md-1">
-        <select class="form-control" style="margin-left:-33px; width:72px">
+        <select class="form-control" style="margin-left:-33px; width:72px" name="userData['0'].personalDetails.Select" [(ngModel)]="userData['0'].personalDetails.Select" #Select="ngModel">
             <option>AM</option>
             <option>PM</option>
         </select>

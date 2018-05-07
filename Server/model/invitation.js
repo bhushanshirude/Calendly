@@ -6,7 +6,7 @@ var Model = new Schema({
     "InvitationDetails": Object,
     "UserId": String,
 }, {
-    collation: "invitaions"
+    collection: "invitaions"
 });
 
 module.exports = mongoose.model("invitaions", Model);
