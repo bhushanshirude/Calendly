@@ -15,16 +15,17 @@ module.exports = {
             response.status(200).json({ status: "Success", message: "Success", docs: docs });
         })
     },
-    findData: function(request, response) {
-        Model.find(request.body, function(err, docs) {
-            if (err || docs.length <= 0) {
-                response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
-                return false;
-            } else {
-                response.status(200).json({ status: "Success", message: "Success", docs: docs });
-            }
-        })
-    },
+    // findData: function(request, response) {
+    //     console.log("====Body=====", request.body)
+    //     Model.find(request.body, function(err, docs) {
+    //         if (err || docs.length <= 0) {
+    //             response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
+    //             return false;
+    //         } else {
+    //             response.status(200).json({ status: "Success", message: "Success", docs: docs });
+    //         }
+    //     })
+    // },
 
     create: function(req, response) {
 

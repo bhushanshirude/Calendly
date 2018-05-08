@@ -19,13 +19,15 @@ export class MessageSendCancelComponent implements OnInit {
     let userData ={
       email:this.userData['0'].personalDetails.Email,
       firstname:this.userData['0'].personalDetails.FirstName,
-      lastname:this.userData['0'].personalDetails.LastName
+      lastname:this.userData['0'].personalDetails.LastName,
+      userId:this.userData['0']._id,
     }
   
     this.HttpServices.post("invitation/email",userData).subscribe(
       resp=>{
         console.log("======response=====",userData);
         swal("Thanx","Reschulde Meeting Mail has been Send","success")
+        // this.router.navigate(['home/event']);
       },err=>{
         console.log("======error========",err)
         swal("Error","Reschdule mail has Not Been send","error")

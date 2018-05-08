@@ -46,7 +46,7 @@ export class RescheduleComponent implements OnInit {
       }
       this.HttpService.put("invitation/" + this.userId, inviData).subscribe(
         res => {
-          swal("verify", "Mail Has been Send", "success");
+          swal("Reschedule", "Time & Data", "success");
           this.router.navigate(['home/messagecancel'])
           console.log("=======Resp====",res)
         }, err => {

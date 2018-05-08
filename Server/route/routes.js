@@ -9,7 +9,7 @@ routes.post("/user", users.create);
 routes.get("/user/:id", users.getone);
 routes.put("/user/:id", users.update);
 routes.put("/user/Email/:id", users.updatePassword);
-routes.post("/user/find", users.findData);
+// routes.post("/user/find", users.findData);
 
 // This is for Meeting
 routes.post("/meeting", meeting.create);
