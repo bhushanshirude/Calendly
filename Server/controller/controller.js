@@ -16,9 +16,7 @@ module.exports = {
         })
     },
     findData: function(request, response) {
-        // console.log("=======findData======", request.body);
         Model.find(request.body, function(err, docs) {
-            // console.log("========== Find Result =====", docs);
             if (err || docs.length <= 0) {
                 response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
                 return false;
@@ -52,14 +50,34 @@ module.exports = {
     },
 
     update: function(request, response) {
-        Model.findByIdAndUpdate(request.params.id, { new: true }, {
-                $set: request.body
+        console.log("=========request===========", request.body)
+        let Data = request.body.personalDetails;
+        Model.findByIdAndUpdate(request.params.id, {
+                $set: { 'personalDetails.Date': Data.Date, 'personalDetails.Time': Data.Time, 'personalDetails.Select': Data.Select, }
             },
             function(err, docs) {
                 if (err) {
                     response.status(500).json({ status: "Error", message: err, docs: '' });
                     return false;
                 } else {
+                    console.log("===========me===========", docs)
+                    response.status(200).json({ status: "Success", message: "Success", docs: docs });
+                    return true;
+                }
+            });
+    },
+    updatePassword: function(request, response) {
+        console.log("=========request===========", request.body)
+        let Data = request.body.personalDetails;
+        Model.findByIdAndUpdate(request.params.id, {
+                $set: { 'personalDetails.Password': Data.Password }
+            },
+            function(err, docs) {
+                if (err) {
+                    response.status(500).json({ status: "Error", message: err, docs: '' });
+                    return false;
+                } else {
+                    console.log("===========me===========", docs)
                     response.status(200).json({ status: "Success", message: "Success", docs: docs });
                     return true;
                 }

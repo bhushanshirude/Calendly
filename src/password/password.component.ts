@@ -13,14 +13,19 @@ export class PasswordComponent implements OnInit {
     private userData;
     constructor(private HttpService: httpService, private router: Router) {
         this.userData = JSON.parse(localStorage.getItem("user"));
+        console.log("=========password========",this.userData.personalDetails.Email)
         console.log("=========password========",this.userData)
+
     }
     ngOnInit() {
     }
     update(form: any, event: Event) {   
-
+        event.preventDefault()
         if (form.valid) {
-            this.HttpService.put("user/" + this.userData._id, this.userData).subscribe(resp => {
+            let onData ={
+                personalDetails:form.value
+            }
+            this.HttpService.put("user/Email/" + this.userData._id, onData).subscribe(resp => {
                 swal("successfully ", "Update Password", "success");
                 this.router.navigate(['/home/login']);
             }, err => {

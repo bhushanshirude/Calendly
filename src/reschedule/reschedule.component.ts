@@ -42,11 +42,12 @@ export class RescheduleComponent implements OnInit {
     event.preventDefault()
     if (form.valid) {
       let inviData = {
-        InvitationDetails: form.value
+        InvitationDetails:form.value
       }
       this.HttpService.put("invitation/" + this.userId, inviData).subscribe(
         res => {
-          swal("verify", "update", "success");
+          swal("verify", "Mail Has been Send", "success");
+          this.router.navigate(['home/messagecancel'])
           console.log("=======Resp====",res)
         }, err => {
           swal("call", "data", "error");
@@ -54,5 +55,4 @@ export class RescheduleComponent implements OnInit {
     }
   }
 }
-
 

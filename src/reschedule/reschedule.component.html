@@ -16,13 +16,13 @@
 <form #conForm="ngForm" (ngSubmit)="confirms(conForm, $event)" novalidate>
     <div class="row col-md-8" style="margin-left: 28em;">
         <div class="col-md-4">
-            <input type="date" class="form-control" name="Date" ngModel #Date="ngModel">
+            <input type="date" class="form-control" name="IDate" ngModel #IDate="ngModel">
         </div>
         <div class="col-md-2">
-            <input style="width: 7em;" id="1 " [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" name="Time" ngModel #Time="ngModel" />
+            <input style="width: 7em;" id="1 " [textMask]="{mask: mask} " type="text " class="form-control " placeholder="00.00.00" name="ITime" ngModel #ITime="ngModel" />
         </div>
         <div class="col-md-1">
-            <select class="form-control" style="margin-left:-33px; width:72px" name="Select" ngModel #Select="ngModel">
+            <select class="form-control" style="margin-left:-33px; width:72px" name="ISelect" ngModel #ISelect="ngModel">
           <option>AM</option>
           <option>PM</option>
       </select>

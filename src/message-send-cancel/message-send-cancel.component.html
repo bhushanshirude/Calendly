@@ -1,6 +1,4 @@
 <div class="card-header">
-    <div class="fa fa-arrow-left offset-1" (click)="left()">
-    </div>
     <span>{{this.userData['0'].personalDetails.FirstName}} {{this.userData['0'].personalDetails.LastName}} <a class="fa fa-angle-down"></a></span>
 </div>
 
@@ -19,13 +17,16 @@
             </div>
             <div class="card-body">
                 <div class="col-md-12">
-                    <input type="text" class="form-control" placeholder="Enter Name" name="IName" ngModel #IName="ngModel">
+                    <a><input type="text" class="form-control" placeholder="{{userData[ '0'].personalDetails.FirstName}} {{userData[ '0'].personalDetails.LastName}}" readonly> </a>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter Email Id" name="IEmail" ngModel #IEmail="ngModel">
+                    <input type="text" class="form-control" placeholder="{{userData[ '0'].personalDetails.Email}}" readonly>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <input type="text" class="form-control" placeholder="Enter Reason">
                 </div>
                 <div class="footer mb-3 offset-2 mt-4">
-                    <button class="btn btn-primary" type="Submit">Schedule Event</button>
+                    <button class="btn btn-primary" type="Submit">Reschedule Event</button>
                 </div>
             </div>
         </form>

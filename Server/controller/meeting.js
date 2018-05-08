@@ -18,7 +18,6 @@ module.exports = {
     },
 
     update: function(request, response) {
-
         meetingModel.findByIdAndUpdate(request.params.id, { $set: request.body },
             function(err, docs) {
                 if (err) {

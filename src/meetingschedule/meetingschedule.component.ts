@@ -23,7 +23,6 @@ export class MeetingscheduleComponent implements OnInit {
   }
   constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    // console.log("==========Userid=========", this.userData['0']._id);
   }
   open() {
     const amazingTimePicker = this.atp.open();
@@ -34,15 +33,20 @@ export class MeetingscheduleComponent implements OnInit {
   ngOnInit() { }
 
   confirm(form: any, event: Event) {
-    this.HttpService.put("user/" + this.userData['0']._id, this.userData['0']).subscribe(
-      resp => {
-        console.log("=======aaaaaaaaa=======", this.userData);
-        console.log("======sssssss========", resp)
-        swal("Thanx", "Please Update time & Data", "success")
-        this.router.navigate(['home/message']);
-      }, err => {
-        swal("Error", "Please Update time & Data", "error")
-      });
+    event.preventDefault()
+    if (form.valid) {
+      let onData = {
+        personalDetails: form.value
+      }
+      this.HttpService.put("user/" + this.userData['0']._id, onData).subscribe(
+        resp => {
+          swal("Thanx", "Please Update time & Data", "success")
+          this.router.navigate(['home/message']);
+        }, err => {
+          swal("Error", "Please Update time & Data", "error")
+        });
+      form.resetForm();
+      return true;
     }
-    // return resetForm()
+  }
 }

@@ -3,7 +3,13 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var Model = new Schema({
-    "InvitationDetails": Object,
+    "InvitationDetails": {
+        IName: String,
+        IEmail: String,
+        IDate: String,
+        ISelect: String,
+        ITime: String
+    },
     "UserId": String,
 }, {
     collection: "invitaions"

@@ -16,6 +16,7 @@ import { MeetingscheduleComponent } from '../meetingschedule/meetingschedule.com
 import { GroupscheduleComponent } from '../groupschedule/groupschedule.component';
 import { MessagesendComponent } from '../messagesend/messagesend.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
+import { MessageSendCancelComponent } from '../message-send-cancel/message-send-cancel.component';
 
 
 export const routes: Routes = [
@@ -37,7 +38,8 @@ export const routes: Routes = [
             {path:'event/meetingsch',component:MeetingscheduleComponent},
             {path:'groupSchedule',component:GroupscheduleComponent},
             {path:'message',component:MessagesendComponent},
-            {path:'reschedule/:_id',component:RescheduleComponent}
+            {path:'reschedule/:_id',component:RescheduleComponent},
+            {path:'messagecancel',component:MessageSendCancelComponent}
         ]
     }
 ];
