@@ -21,5 +21,6 @@ routes.get("/meeting/getall/:id", meeting.getall);
 routes.post("/invitation", invitation.create);
 routes.post("/invitation/email", invitation.send);
 routes.put("/invitation/:id", invitation.update);
+routes.post("/invitation/find", invitation.findData);
 
 module.exports = routes;

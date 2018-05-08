@@ -14,7 +14,15 @@ export class MessageSendCancelComponent implements OnInit {
     console.log("======ssssss======",this.userData)
    }
   ngOnInit() {
-  }
+    this.HttpServices.post("invitation/find",{"UserId":this.userData['0']._id}).subscribe(
+      resp=>{
+          console.log("=========Dipak====",resp)
+      },err=>{
+        console.log("======Vivek======",err)
+      });
+  };
+
+
   schedule(form:any, event:Event){
     let userData ={
       email:this.userData['0'].personalDetails.Email,

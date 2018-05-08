@@ -72,6 +72,18 @@ module.exports = {
         }
         response.status(200).json({ status: "Success", message: "Success", docs: '' });
     },
+    findData: function(request, response) {
+        console.log("=======findData======", request.body);
+        invitationModel.find(request.body, function(err, docs) {
+            // console.log("========== Find Result =====", docs);
+            if (err || docs.length <= 0) {
+                response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
+                return false;
+            } else {
+                response.status(200).json({ status: "Success", message: "Success", docs: docs });
+            }
+        })
+    },
 }
 
 function sendEmail(to, sub, msg) {
