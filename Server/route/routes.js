@@ -19,7 +19,7 @@ routes.get("/meeting/getall/:id", meeting.getall);
 
 // This is for invitation
 routes.post("/invitation", invitation.create);
-// routes.post("/invitation/email", invitation.send);
+routes.post("/invitation/email", invitation.send);
 routes.put("/invitation/:id", invitation.update);
 
 module.exports = routes;
