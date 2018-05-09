@@ -17,12 +17,12 @@ export class MessagesendComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.HttpService.post("invitation/finds" ,{"UserId" : this.}).subscribe(
-    //   resp=>{
-    //     console.log("=========aaaaaaaaa=========",resp)
-    //   },err=>{
-    //     console.log("=========aaaaaaaaa=========",err)
-    //   });
+    this.HttpService.post("meeting/find", { "userId": this.userData['0'].id }).subscribe(
+      resp => {
+        console.log("=========MeetingData====", resp)
+      }, err => {
+        console.log("=========MeetingData====", err)
+      });
   }
 
   left() {

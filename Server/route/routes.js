@@ -22,6 +22,5 @@ routes.post("/invitation", invitation.create);
 routes.post("/invitation/email", invitation.send);
 routes.put("/invitation/:id", invitation.update);
 routes.post("/invitation/find", invitation.findData);
-// routes.post("/invitation/finds", invitation.findDatas);
 
 module.exports = routes;

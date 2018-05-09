@@ -9,7 +9,7 @@ module.exports = {
 
         var newUser = new invitationModel(req.body);
         console.log("==========12========", req.body)
-        newUser.save(function(err) {
+        newUser.save(function(err, docs) {
             if (err) {
                 response.status(500).json({ status: "Error", message: err, docs: '' });
                 return false;
@@ -48,21 +48,12 @@ module.exports = {
                 }
             });
     },
-    // findDatas: function(request, response) {
-    //     console.log("====Body1=====", request.body)
-    //     Model.find(request.body, function(err, docs) {
-    //         if (err || docs.length <= 0) {
-    //             response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
-    //             return false;
-    //         } else {
-    //             response.status(200).json({ status: "Success", message: "Success", docs: docs });
-    //         }
-    //     })
-    // },
-
     send: function(req, response) {
         var data = req.body;
         var url = config.WEBURL + "home/reschedule/" + data.userId;
+        // invitationModel.find()
+        // call user model with userid data from invitation document
+        //userModel.find(docs.UserId, (err, data)=> { if(err){ handle(err)}else { data. }  })
         var msg = "<h4>Hello " + data.firstname + data.lastname + ",</h4>" + "<h4>Your Numnu With Bhushan at 09.00.00 Am On May 9,2018 is Schedule<br><br> Veritask </h4><br><b>Location</b>: Pune.<br><br><h3>Make Change to This Event : </h3>";
 
         msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
