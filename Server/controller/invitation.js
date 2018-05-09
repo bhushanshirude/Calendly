@@ -46,10 +46,11 @@ module.exports = {
                 }
             });
     },
+
     send: function(req, response) {
         var data = req.body;
         var url = config.WEBURL + "home/reschedule/" + data.userId;
-        var msg = "<h4>Hello " + data.firstname + data.lastname + ",</h4>" + "<h4>Your Numnu With" + data.IName + ", 09.00.00 Am On May 9,2018 is Schedule<br><br> Veritask </h4><br><b>Location</b>: Pune.<br><br><h3>Make Change to This Event : </h3>";
+        var msg = "<h4>Hello " + data.firstname + data.lastname + ",</h4>" + "<h4>Your Numnu With" + " " + data.IName + " " + "At " + " " + data.IDate + " " + "On " + " " + data.ITime + " " + data.ISelect + ",</h4><br> Veritask </h4><br><br><b>Location</b>: Pune.<br><br><h3>Make Change to This Event : </h3>";
 
         msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
         msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";
@@ -60,6 +61,7 @@ module.exports = {
         }
         response.status(200).json({ status: "Success", message: "Success", docs: '' });
     },
+
     findData: function(request, response) {
         invitationModel.find(request.body, function(err, docs) {
             // console.log("========== Find Result =====", docs);

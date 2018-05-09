@@ -31,7 +31,10 @@ export class MessageSendCancelComponent implements OnInit {
       firstname: this.userData['0'].personalDetails.FirstName,
       lastname: this.userData['0'].personalDetails.LastName,
       userId: this.userData['0']._id,
-      IName: this.invitationData.IName
+      IName: this.invitationData.IName,
+      IDate:this.invitationData.IDate,
+      ITime:this.invitationData.ITime,
+      ISelect:this.invitationData.ISelect
     }
 
     this.HttpServices.post("invitation/email ", userData).subscribe(
