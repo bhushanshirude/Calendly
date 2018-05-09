@@ -22,7 +22,15 @@ export class MessageSendCancelComponent implements OnInit {
         console.log("======Vivek======", err)
       });
 
-  };
+      this.HttpServices.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(
+        resp=>{
+          console.log("=====success====",resp)
+        },
+        err=>{
+          console.log("====Error====",err)
+        }
+      )
+  }
 
 
   schedule(form: any, event: Event) {
