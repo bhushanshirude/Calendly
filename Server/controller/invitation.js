@@ -4,6 +4,7 @@ var multer = require("multer")
 var config = require("../config/config");
 
 module.exports = {
+
     create: function(req, response) {
 
         var newUser = new invitationModel(req.body);
@@ -47,21 +48,22 @@ module.exports = {
                 }
             });
     },
-    findData: function(request, response) {
-        console.log("====Body=====", request.body)
-        Model.find(request.body, function(err, docs) {
-            if (err || docs.length <= 0) {
-                response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
-                return false;
-            } else {
-                response.status(200).json({ status: "Success", message: "Success", docs: docs });
-            }
-        })
-    },
+    // findDatas: function(request, response) {
+    //     console.log("====Body1=====", request.body)
+    //     Model.find(request.body, function(err, docs) {
+    //         if (err || docs.length <= 0) {
+    //             response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
+    //             return false;
+    //         } else {
+    //             response.status(200).json({ status: "Success", message: "Success", docs: docs });
+    //         }
+    //     })
+    // },
+
     send: function(req, response) {
         var data = req.body;
         var url = config.WEBURL + "home/reschedule/" + data.userId;
-        var msg = "<h4>Hello " + data.firstname + ",</h4>" + "<h4>Your Numnu With Bhushan at 09.00.00 Am On May 9,2018 is Schedule<br><br> Veritask </h4><br><b>Location</b>: Pune.<br><br><h3>Make Change to This Event : </h3>";
+        var msg = "<h4>Hello " + data.firstname + data.lastname + ",</h4>" + "<h4>Your Numnu With Bhushan at 09.00.00 Am On May 9,2018 is Schedule<br><br> Veritask </h4><br><b>Location</b>: Pune.<br><br><h3>Make Change to This Event : </h3>";
 
         msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
         msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";

@@ -13,9 +13,6 @@ export class PasswordComponent implements OnInit {
     private userData;
     constructor(private HttpService: httpService, private router: Router) {
         this.userData = JSON.parse(localStorage.getItem("user"));
-        console.log("=========password========",this.userData.personalDetails.Email)
-        console.log("=========password========",this.userData)
-
     }
     ngOnInit() {
     }
@@ -27,13 +24,12 @@ export class PasswordComponent implements OnInit {
             }
             this.HttpService.put("user/Email/" + this.userData._id, onData).subscribe(resp => {
                 swal("successfully ", "Update Password", "success");
-                this.router.navigate(['/home/login']);
+                // this.router.navigate(['/home/login']);
             }, err => {
                 swal("Error", "Please Update the field", "error")
             });
-            form.resetForm();
-            return true;
+            localStorage.clear();
+            this.router.navigate(['/home/login'])
         }
     }
-
 }

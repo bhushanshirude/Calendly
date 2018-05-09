@@ -21,7 +21,7 @@ export class GroupscheduleComponent implements OnInit {
     this.HttpService.put("meeting/" + this.meetingData._id, this.meetingData).subscribe(
       resp => {
         swal("Thanx","Group Meeting schedule Update","success")
-        this.router.navigate(['home/dash'])
+        this.router.navigate(['home/event'])
        },
       err => { 
         swal("Error","Group Meeting schedule Update","error")

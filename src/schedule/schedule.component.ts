@@ -22,7 +22,7 @@ export class ScheduleComponent implements OnInit {
       resp => {
         console.log("===========HttpServices============", )
         swal("Thanx ", "Meeting Schedule Update", "success");
-        this.router.navigate(['home/dash'])
+        this.router.navigate(['home/event'])
       },
       err => {
         swal("Error", "Meeting Schedule Not Update", "error")

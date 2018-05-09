@@ -11,7 +11,6 @@ export class MessageSendCancelComponent implements OnInit {
   private userData;
   constructor(private HttpServices:httpService ,private router :Router) {
     this.userData=JSON.parse(localStorage.getItem("user"))
-    console.log("======ssssss======",this.userData)
    }
   ngOnInit() {
     this.HttpServices.post("invitation/find",{"UserId":this.userData['0']._id}).subscribe(
@@ -31,9 +30,8 @@ export class MessageSendCancelComponent implements OnInit {
       userId:this.userData['0']._id,
     }
   
-    this.HttpServices.post("invitation/email",userData).subscribe(
+    this.HttpServices.post("invitation/ ",userData).subscribe(
       resp=>{
-        console.log("======response=====",userData);
         swal("Thanx","Reschulde Meeting Mail has been Send","success")
         // this.router.navigate(['home/event']);
       },err=>{
