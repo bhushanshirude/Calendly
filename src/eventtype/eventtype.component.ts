@@ -19,7 +19,6 @@ export class EventtypeComponent implements OnInit {
       resp=>{
         this.meetingData =resp;
           console.log("=========vivek====",this.meetingData)
-          // localStorage.setItem=JSON.parse("meetingData");
       },err=>{
         console.log("======Dipak======",err)
       });
