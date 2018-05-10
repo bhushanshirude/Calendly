@@ -41,6 +41,7 @@ export class MessagesendComponent implements OnInit {
     let inviData = {
       InvitationDetails: form.value,
       "UserId": this.userData['0']._id,
+      "UData":this.Data,
       "Mdata": this.meetingData 
     }
     this.HttpService.post("invitation", inviData).subscribe(

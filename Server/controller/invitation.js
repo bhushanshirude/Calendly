@@ -8,7 +8,7 @@ module.exports = {
     create: function(req, response) {
 
         var data = req.body.Mdata;
-        // var userdata = req.body.UData;
+        var userdata = req.body.UData;
         // console.log("=====sssss======", userdata)
         var newUser = new invitationModel(req.body);
         newUser.save(function(err, docs) {
@@ -18,8 +18,7 @@ module.exports = {
             }
             var url = config.WEBURL + "home/reschedule/" + newUser._id;
 
-            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.Event + " " + " On" + " " + data.Description + " " + "At " + " " + data.Description + " " + data.Description + " ," + " " + data.Description + " " + "<br><br> Location : " + data.Location + "<h3>Make Change to This Event : </h3>";
-            // userdata.Date userdata.Select  userdata.Time 
+            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.Event + " " + " On" + " " + userdata.Date + " " + "At " + " " + userdata.Time + " " + userdata.Select + " ," + " " + data.Description + " " + "<br><br> Location : " + data.Location + "<h3>Make Change to This Event : </h3>";
 
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";
