@@ -14,6 +14,7 @@ import swal from 'sweetalert2';
 export class RescheduleComponent implements OnInit {
   private userId: string;
   private userData;
+  private meetingdata;
   private invitationData;
   // public myModel = ''
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
@@ -39,10 +40,16 @@ export class RescheduleComponent implements OnInit {
   ngOnInit() {
     this.HttpService.post("meeting/find", { "userId": this.userData[0]._id }).subscribe(
       resp => {
-        this.invitationData = resp.docs[0].MeetingDetails;
+        this.meetingdata = resp.docs[0].MeetingDetails;
       }, err => {
         console.log("===error====", err)
       })
+      this.HttpService.post("invitation/find",{"UserId":this.userData[0]._id}).subscribe(
+        resp=>{
+          this.invitationData=resp.docs[0].InvitationDetails;
+        },err=>{
+          console.log("=====Error======",err)
+        })
   }
   confirms(form: any, event: Event) {
     event.preventDefault()

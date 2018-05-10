@@ -10,6 +10,8 @@ import swal from 'sweetalert2'
 export class MessageSendCancelComponent implements OnInit {
   private userData;
   private invitationData;
+  private meetingdata;
+  private UData;
   constructor(private HttpServices: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"))
   }
@@ -17,36 +19,38 @@ export class MessageSendCancelComponent implements OnInit {
     this.HttpServices.post("invitation/find", { "UserId": this.userData['0']._id }).subscribe(
       resp => {
         this.invitationData = resp.docs[0].InvitationDetails;
-        console.log("====Success====", this.invitationData.IName);
       }, err => {
         console.log("======Error======", err)
       });
 
       this.HttpServices.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(
         resp=>{
-          console.log("=====success====",resp)
+          this.meetingdata =resp.docs[0].MeetingDetails
         },
         err=>{
           console.log("====Error====",err)
         })
+        this.HttpServices.post("user/find",{"_id":this.userData[0]._id}).subscribe(
+          resp=>{
+            this.UData=resp.docs[0].personalDetails
+        },err=>{
+          console.log("----------",err)
+        })
   }
 
 
-  schedule(form: any, event: Event) {
+  reschedule(form: any, event: Event) {
     let userData = {
-      email: this.userData['0'].personalDetails.Email,
-      firstname: this.userData['0'].personalDetails.FirstName,
-      lastname: this.userData['0'].personalDetails.LastName,
-      userId: this.userData['0']._id,
-      IName: this.invitationData.IName,
-      IDate:this.invitationData.IDate,
-      ITime:this.invitationData.ITime,
-      ISelect:this.invitationData.ISelect
+      InvitationDetails:form.value,
+      "userId": this.userData['0']._id,
+      "IData":this.invitationData,
+      "udata":this.UData,
+      "MData":this.meetingdata
     }
     this.HttpServices.post("invitation/email ", userData).subscribe(
       resp => {
         swal("Thanx", "Reschulde Meeting Mail has been Send", "success")
-        // this.router.navigate(['home/event']);
+        this.router.navigate(['/home/event']);
       }, err => {
         console.log("======error========", err)
         swal("Error", "Reschdule mail has Not Been send", "error")

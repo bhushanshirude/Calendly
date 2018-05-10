@@ -9,7 +9,7 @@ module.exports = {
 
         var data = req.body.Mdata;
         var userdata = req.body.UData;
-        // console.log("=====sssss======", userdata)
+        console.log("---------------", userdata)
         var newUser = new invitationModel(req.body);
         newUser.save(function(err, docs) {
             if (err) {
@@ -18,7 +18,7 @@ module.exports = {
             }
             var url = config.WEBURL + "home/reschedule/" + newUser._id;
 
-            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.Event + " " + " On" + " " + userdata.Date + " " + "At " + " " + userdata.Time + " " + userdata.Select + " ," + " " + data.Description + " " + "<br><br> Location : " + data.Location + "<h3>Make Change to This Event : </h3>";
+            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.Event + " " + "With " + " " + userdata.FirstName + " " + userdata.LastName + " " + " On" + " " + userdata.Date + " " + "At " + " " + userdata.Time + " " + userdata.Select + " ," + "<br> " + data.Description + " " + "<br><br> Location : " + data.Location + "<h3>Make Change to This Event : </h3>";
 
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";
@@ -51,18 +51,24 @@ module.exports = {
     },
 
     send: function(req, response) {
-        var data = req.body;
-        var url = config.WEBURL + "home/reschedule/" + data.userId;
-        var msg = "<h4>Hello " + data.firstname + data.lastname + ",</h4>" + "<h4>Your Numnu With" + " " + data.IName + " " + "At " + " " + data.IDate + " " + "On " + " " + data.ITime + " " + data.ISelect + ",</h4><br> Veritask </h4><br><br><b>Location</b>: Pune.<br><br><h3>Make Change to This Event : </h3>";
+        var data = req.body.userId;
+        var udata = req.body.udata;
+        var mdata = req.body.MData;
+        var idata = req.body.IData;
+        var reason = req.body.InvitationDetails;
+        console.log("ssssssssssssss", reason)
+        var url = config.WEBURL + "home/reschedule/" + data;
+        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + ",</h4><br> " + " " + mdata.Description + " , <br>" + "Reason For Reschedule Meeting : " + " " + reason.Reason + "<br>" + "</h4><br><b>Location</b>: Pune.<br><br><h3>Make Change to This Event : </h3>";
+        // msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
+        // msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";
 
-        msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
-        msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";
-
-        if (sendEmail(data.email, "Verification Email", msg)) {
+        if (sendEmail(udata.Email, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
             return false;
+        } else {
+            response.status(200).json({ status: "Success", message: "Success", docs: '' });
+            return true;
         }
-        response.status(200).json({ status: "Success", message: "Success", docs: '' });
     },
 
     findData: function(request, response) {
