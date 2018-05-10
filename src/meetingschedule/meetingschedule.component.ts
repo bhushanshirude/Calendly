@@ -14,6 +14,7 @@ import swal from 'sweetalert2';
 export class MeetingscheduleComponent implements OnInit {
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
   private userData;
+  private meetingData;
   date: Date = new Date();
   settings = {
     bigBanner: true,
@@ -30,8 +31,16 @@ export class MeetingscheduleComponent implements OnInit {
       console.log(time);
     });
   }
-  ngOnInit() { }
-
+  ngOnInit() { 
+    this.HttpService.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(
+      resp=>{
+        this.meetingData =resp.docs[0].MeetingDetails;
+        console.log("=====data=========",this.meetingData)
+      },
+      err=>{
+        console.log("=======error=====",err)
+      });
+  }
   confirm(form: any, event: Event) {
     event.preventDefault()
     if (form.valid) {

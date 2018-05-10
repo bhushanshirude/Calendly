@@ -17,9 +17,9 @@ export class MessageSendCancelComponent implements OnInit {
     this.HttpServices.post("invitation/find", { "UserId": this.userData['0']._id }).subscribe(
       resp => {
         this.invitationData = resp.docs[0].InvitationDetails;
-        console.log("==== My Data ====", this.invitationData.IName);
+        console.log("====Success====", this.invitationData.IName);
       }, err => {
-        console.log("======Vivek======", err)
+        console.log("======Error======", err)
       });
 
       this.HttpServices.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(
@@ -28,8 +28,7 @@ export class MessageSendCancelComponent implements OnInit {
         },
         err=>{
           console.log("====Error====",err)
-        }
-      )
+        })
   }
 
 
@@ -44,7 +43,6 @@ export class MessageSendCancelComponent implements OnInit {
       ITime:this.invitationData.ITime,
       ISelect:this.invitationData.ISelect
     }
-
     this.HttpServices.post("invitation/email ", userData).subscribe(
       resp => {
         swal("Thanx", "Reschulde Meeting Mail has been Send", "success")

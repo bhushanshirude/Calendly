@@ -1,16 +1,16 @@
 <div class="col-md-12">
-    <a>Dipak<p class="fa fa-angle-down" style="font-size: 15px;"></p></a>
+    <a>{{userData['0'].personalDetails.FirstName}} {{userData['0'].personalDetails.LastName}}<p class="fa fa-angle-down" style="font-size: 15px;"></p></a>
 </div>
 <div class="card col-md-12 mt-2">
     <div class="row">
-        <a>Time Pass</a>
+        <a *ngIf="invitationData">{{invitationData.Event}}</a>
         <p>Times are in <i style="color:#00A2FF;"> india sir lanka Time <i class="fa fa-angle-down" style="font-size: 15px;"></i> </i>
         </p>
     </div>
 </div>
 <div class="fa mt-3">
-    <p class="fa fa-comments-o"><a>Description</a></p><br>
-    <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a>Mumbai</a></p>
+    <p class="fa fa-comments-o"><a *ngIf="invitationData">{{invitationData.Description}}</a></p><br>
+    <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a *ngIf="invitationData">{{invitationData.Location}}</a></p>
 </div>
 <span class="offset-4">Select Date & Time </span>
 <form #conForm="ngForm" (ngSubmit)="confirms(conForm, $event)" novalidate>

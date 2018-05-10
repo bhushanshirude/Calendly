@@ -15,7 +15,7 @@ export class RescheduleComponent implements OnInit {
   private userId: string;
   private userData;
   private invitationData;
-  public myModel = ''
+  // public myModel = ''
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
   date: Date = new Date();
   settings = {
@@ -37,18 +37,26 @@ export class RescheduleComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.HttpService.post("meeting/find", { "userId": this.userData[0]._id }).subscribe(
+      resp => {
+        this.invitationData = resp.docs[0].MeetingDetails;
+      }, err => {
+        console.log("===error====", err)
+      })
   }
   confirms(form: any, event: Event) {
     event.preventDefault()
     if (form.valid) {
       let inviData = {
-        InvitationDetails:form.value
+        InvitationDetails: form.value,
       }
       this.HttpService.put("invitation/" + this.userId, inviData).subscribe(
         res => {
+          console.log("=======updateinvi======", inviData)
           swal("Reschedule", "Time & Data", "success");
+          
           this.router.navigate(['home/messagecancel'])
-          console.log("=======Resp====",res)
+          console.log("=======Resp====", res)
         }, err => {
           swal("call", "data", "error");
         });

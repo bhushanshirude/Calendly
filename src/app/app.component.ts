@@ -16,8 +16,11 @@ export class AppComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem("user"));
 
     console.log("============app Component===========", this.userData)
+    //  localStorage.clear();
+    // this.router.navigate(['home'])
   }
   ngOnInit() {
+   
   }
 
   ngAfterViewInit() {
@@ -34,7 +37,6 @@ export class AppComponent implements OnInit {
       })
   }
   logout() {
-    // localStorage.removeItem("user");
     localStorage.clear();
     this.router.navigate(['home'])
   }

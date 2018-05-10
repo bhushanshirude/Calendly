@@ -8,7 +8,6 @@ module.exports = {
         var newUser = new meetingModel(request.body);
         newUser.save({ $set: request.body },
             function(err, docs) {
-                // console.log("============body===========", request.body)
                 if (err) {
                     response.status(500).json({ status: "Error", message: err, docs: '' });
                     return false;
@@ -28,9 +27,7 @@ module.exports = {
             })
     },
     findData: function(request, response) {
-        console.log("=======findData======", request.body);
         meetingModel.find(request.body, function(err, docs) {
-            console.log("========== Find Result =====", docs);
             if (err || docs.length <= 0) {
                 response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
                 return false;

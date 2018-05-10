@@ -3,13 +3,13 @@
 </div>
 <div class="card col-md-12 mt-2">
     <div class="row">
-        <a>Time Pass</a>
+        <a *ngIf="meetingData">{{meetingData.Event}}</a>
         <p>Times are in <i style="color:#00A2FF;"> india sir lanka Time <i class="fa fa-angle-down" style="font-size: 15px;"></i> </i>
         </p>
     </div>
 </div>
 <div class="fa mt-3">
-    <p class="fa fa-comments-o"><a>Description</a></p><br>
+    <p class="fa fa-comments-o"><a *ngIf="meetingData">{{meetingData.Description}}</a></p><br>
     <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a>Mumbai</a></p>
 </div>
 <span class="offset-4">Select Date & Time </span>

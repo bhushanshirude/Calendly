@@ -11,18 +11,27 @@ import { httpService } from '../httpservice';
 export class MessagesendComponent implements OnInit {
   private userData;
   private meetingData;
+  private Data;
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("========UserData=======", this.userData)
   }
 
   ngOnInit() {
     this.HttpService.post("meeting/find", { "userId": this.userData['0'].id }).subscribe(
       resp => {
-        console.log("=========MeetingData====", resp)
+        // this.meetingData=resp.docs;  // This is for all array to take data
+        this.meetingData = resp.docs['0'].MeetingDetails;
       }, err => {
         console.log("=========MeetingData====", err)
       });
+
+    this.HttpService.post("user/find", { "_id": this.userData[0]._id }).subscribe(
+      resp => {
+        this.Data =resp.docs[0].personalDetails;
+        console.log("==========",this.Data)
+      }, err => {
+        console.log("=========Error======", err)
+      })
   }
 
   left() {
@@ -31,13 +40,14 @@ export class MessagesendComponent implements OnInit {
   schedule(form: any, event: Event) {
     let inviData = {
       InvitationDetails: form.value,
-      "UserId": this.userData['0']._id
+      "UserId": this.userData['0']._id,
+      "Mdata": this.meetingData 
     }
     this.HttpService.post("invitation", inviData).subscribe(
       resp => {
-        console.log("=======Success=========", resp)
-        // localStorage.setItem
+        console.log("=======Success=========", inviData)
         swal("Thanks", "Schedule Mail Has Been Send", "success")
+
       }, err => {
         console.log("=========Error=========", err)
       });

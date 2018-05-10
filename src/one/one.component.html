@@ -32,13 +32,23 @@
                 </div>
                 <div class="col-md-6 mt-3 ">
                     <select class="form-control " id="Skills " name="grouptype" ngModel #grouptype="ngModel" required>
-                      <option>Select group Type</option>    
+                        <option value="" selected disabled>Please Select group Type</option>  
                       <option>One-On-One</option>
                       <option>Group</option>
                     </select>
                 </div>
-                <div class="col-8 mt-4">
+                <div class="col-6 mt-4">
                     <textarea class="form-control" placeholder="Description/Instructions *" name="Description" ngModel #Description="ngModel"></textarea>
+                </div>
+                <div class="col-md-6 mt-4 ">
+                    <select class="form-control" placeholder="AAAAAAA" name="country" ngModel #country="ngModel" placeholder="Select Country Name" required>
+                      <option value="" selected disabled>Please select Country</option>
+                      <option>America</option>    
+                      <option>Bangladesh</option>
+                      <option>Canada</option>
+                      <option>China</option>
+                      <option>India</option>
+                    </select>
                 </div>
             </div>
             <div class="row mt-4">
@@ -48,11 +58,11 @@
                 <div class="col-12 offset-3">
                     <label class="container" name="option">Display location while booking
                         <input type="radio" >
-                        <span class="checkmark" name="option"></span>
+                        <span class="Check" name="option"></span>
                     </label>
                     <label class="container">Display location only after confirmation
                         <input type="radio">
-                        <span class="checkmark"></span>
+                        <span class="Check"></span>
                     </label>
                 </div>
             </div>

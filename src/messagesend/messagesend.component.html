@@ -1,16 +1,16 @@
 <div class="card-header">
     <div class="fa fa-arrow-left offset-1" (click)="left()">
     </div>
-    <span>{{this.userData['0'].personalDetails.FirstName}} {{this.userData['0'].personalDetails.LastName}} <a class="fa fa-angle-down"></a></span>
+    <span>{{userData['0'].personalDetails.FirstName}} {{userData['0'].personalDetails.LastName}} <a class="fa fa-angle-down"></a></span>
 </div>
 
 <div class="row col-md-12">
     <div class="col-md-5 mt-5 offset-1">
-        <a style="color: #9e2ed3; font-size: 23px;" class="fa fa-circle mt-1"></a> Meeting name<br>
-        <a style="color: #2caa06; font-size: 23px;" class="fa fa-clock-o mt-2"></a> {{this.userData['0'].personalDetails.Date}} ,{{this.userData['0'].personalDetails.Time}} {{this.userData['0'].personalDetails.Select}} <br>
-        <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-globe mt-1"> </a> India<br>
-        <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-comments-o mt-1"></a> feedback<br>
-        <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-crosshairs mt-1"> </a> Pune
+        <a style="color: #9e2ed3; font-size: 23px;" class="fa fa-circle mt-1"></a><span *ngIf="meetingData"> {{meetingData.Event}}</span><br>
+        <a style="color: #2caa06; font-size: 23px;" class="fa fa-clock-o mt-2"></a><span *ngIf="Data"> {{Data.Date}} ,{{Data.Time}} {{Data.Select}} </span><br>
+        <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-globe mt-1"> </a> <span *ngIf="meetingData"> {{meetingData.country}}</span><br>
+        <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-comments-o mt-1"></a><span *ngIf="meetingData"> {{meetingData.Description}}</span> <br>
+        <a style="color: #b9b9b9; font-size: 23px;" class="fa fa-crosshairs mt-1"> </a> <span *ngIf="meetingData"> {{meetingData.Location}}</span>
     </div>
     <div class="col-md-4 mt-5">
         <form #signupForm="ngForm" (ngSubmit)="schedule(signupForm, $event)" novalidate>
