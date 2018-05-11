@@ -35,14 +35,14 @@
                 <a style="color: #9e2ed3; font-size: 25px;" class="fa fa-circle mt-1 " data-toggle="dropdown"><span style="color:rgb(179,179,179); font-size:18px;"></span></a>
             </div>
             <div class="col-md-2 mt-1" style="margin-left:-55px;">
-                {{val.InvitationDetails.ITime}}
+                {{hero.MeetingDetails.Duration}}
             </div>
-            <div class="col-md-5 mt-1">
+            <div class="col-md-7 mt-1">
                 <a> <b style="color:#00a2ff">{{val.InvitationDetails.IName}}</b> with you</a>
                 <br>
                 <a>Event Type :<b style="color:aquamarine"> {{hero.MeetingDetails.Event}}</b> ,</a>
                 <br>
-                <a style="color:#00a2ff">Reschedule By {{val.InvitationDetails.IName}} : <b style="color:rgb(179,179,179)">""</b></a>
+                <a style="color:#00a2ff">Reschedule By {{val.InvitationDetails.IName}} : <b style="color:rgb(179,179,179)">"On {{val.InvitationDetails.IDate}} At {{val.InvitationDetails.ITime}} {{val.InvitationDetails.ISelect}} "</b></a>
             </div>
             <div class="col-md-2 mt-1" style="cursor:pointer; color:#00a2ff;" (click)="showFlag = hero._id ">Details
                 <a style="color:#00a2ff;" class="fa fa-angle-down"></a>

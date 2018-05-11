@@ -8,7 +8,8 @@ var Model = new Schema({
         IEmail: String,
         IDate: String,
         ISelect: String,
-        ITime: String
+        ITime: String,
+        Reason: String,
     },
     "UserId": String,
 }, {
