@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 mt-3">
     <a>{{userData['0'].personalDetails.FirstName}} {{userData['0'].personalDetails.LastName}}<p class="fa fa-angle-down" style="font-size: 15px;"></p></a>
 </div>
 <div class="card col-md-12 mt-2">
@@ -10,7 +10,7 @@
 </div>
 <div class="fa mt-3">
     <p class="fa fa-comments-o"><a *ngIf="meetingData">{{meetingData.Description}}</a></p><br>
-    <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a>Mumbai</a></p>
+    <p class="fa fa-crosshairs" style="color:rgb(179,179,179);"><a *ngIf="meetingData">{{meetingData.Location}}</a></p>
 </div>
 <span class="offset-4">Select Date & Time </span>
 <form #conForm="ngForm" (ngSubmit)="confirm(conForm, $event)" novalidate>

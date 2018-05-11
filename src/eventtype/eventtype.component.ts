@@ -12,7 +12,7 @@ export class EventtypeComponent implements OnInit {
   private meetingData;
   constructor(private router: Router, private HttpServices: httpService) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    // console.log("=======JSONs========", this.userData['0']._id);
+    console.log("=======JSONs========", this.userData);
   }
   ngOnInit() {
     this.HttpServices.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(

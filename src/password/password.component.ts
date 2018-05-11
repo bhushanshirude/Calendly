@@ -13,6 +13,7 @@ export class PasswordComponent implements OnInit {
     private userData;
     constructor(private HttpService: httpService, private router: Router) {
         this.userData = JSON.parse(localStorage.getItem("user"));
+    
     }
     ngOnInit() {
     }
@@ -26,7 +27,7 @@ export class PasswordComponent implements OnInit {
                 swal("successfully ", "Update Password", "success");
                 this.router.navigate(['/home/login']);
             }, err => {
-                swal("Error", "Please Update the field", "error")
+                swal("Error", "Please Update the field", "error")   
             });
             localStorage.clear();
             this.router.navigate(['/home/login'])
