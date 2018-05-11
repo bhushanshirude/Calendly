@@ -46,7 +46,7 @@ export class MessagesendComponent implements OnInit {
     }
     this.HttpService.post("invitation", inviData).subscribe(
       resp => {
-        console.log("=======Success=========", inviData)
+        console.log("=======Successkkkk=========",  resp)
         swal("Thanks", "Schedule Mail Has Been Send", "success")
 
       }, err => {

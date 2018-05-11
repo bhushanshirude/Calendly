@@ -12,23 +12,23 @@ import swal from 'sweetalert2';
   styleUrls: ['./reschedule.component.css']
 })
 export class RescheduleComponent implements OnInit {
-  private userId: string;
+  private InId: string;
   private userData;
   private meetingdata;
   private invitationData;
   // public myModel = ''
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
-  date: Date = new Date();
-  settings = {
-    bigBanner: true,
-    timePicker: false,
-    format: 'dd-MM-yyyy',
-    defaultOpen: false,
-  }
+  // date: Date = new Date();
+  // settings = {
+  //   bigBanner: true,
+  //   timePicker: false,
+  //   format: 'dd-MM-yyyy',
+  //   defaultOpen: false,
+  // }
   constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.userData = JSON.parse(localStorage.getItem("user"));
     activatedRoute.params.subscribe(param => {
-      this.userId = param['_id'];
+      this.InId = param['_id'];
     })
   }
   open() {
@@ -43,13 +43,14 @@ export class RescheduleComponent implements OnInit {
         this.meetingdata = resp.docs[0].MeetingDetails;
       }, err => {
         console.log("===error====", err)
-      })
-      this.HttpService.post("invitation/find",{"UserId":this.userData[0]._id}).subscribe(
-        resp=>{
-          this.invitationData=resp.docs[0].InvitationDetails;
-        },err=>{
-          console.log("=====Error======",err)
-        })
+      });
+
+    this.HttpService.post("invitation/find", { "_id": this.InId }).subscribe(
+      resp => {
+        this.invitationData = resp.docs[0].InvitationDetails;
+      }, err => {
+        console.log("=====Error======", err)
+      });
   }
   confirms(form: any, event: Event) {
     event.preventDefault()
@@ -57,11 +58,9 @@ export class RescheduleComponent implements OnInit {
       let inviData = {
         InvitationDetails: form.value,
       }
-      this.HttpService.put("invitation/" + this.userId, inviData).subscribe(
+      this.HttpService.put("invitation/" + this.InId, inviData).subscribe(
         res => {
-          console.log("=======updateinvi======", inviData)
           swal("Reschedule", "Time & Data", "success");
-          
           this.router.navigate(['home/messagecancel'])
           console.log("=======Resp====", res)
         }, err => {

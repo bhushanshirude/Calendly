@@ -29,13 +29,14 @@ export class MessageSendCancelComponent implements OnInit {
         },
         err=>{
           console.log("====Error====",err)
-        })
+        });
+
         this.HttpServices.post("user/find",{"_id":this.userData[0]._id}).subscribe(
           resp=>{
             this.UData=resp.docs[0].personalDetails
         },err=>{
           console.log("----------",err)
-        })
+        });
   }
 
 

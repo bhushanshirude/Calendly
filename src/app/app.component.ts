@@ -14,13 +14,10 @@ export class AppComponent implements OnInit {
   private userData: any = 0;
   constructor(private Httpservice: httpService, private router: Router, private cdr: ChangeDetectorRef) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-
     console.log("============app Component===========", this.userData)
-    //  localStorage.clear();
-    // this.router.navigate(['home'])
+   
   }
   ngOnInit() {
-   
   }
 
   ngAfterViewInit() {

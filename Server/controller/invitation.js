@@ -9,7 +9,6 @@ module.exports = {
 
         var data = req.body.Mdata;
         var userdata = req.body.UData;
-        console.log("---------------", userdata)
         var newUser = new invitationModel(req.body);
         newUser.save(function(err, docs) {
             if (err) {
@@ -27,7 +26,7 @@ module.exports = {
                 response.json({ status: "Email Error", message: "Email could not sent!" });
                 return false;
             }
-            response.status(200).json({ status: "Success", message: "Success", docs: '' });
+            response.status(200).json({ status: "Success", message: "Success", docs: docs });
         });
     },
     update: function(request, response) {
