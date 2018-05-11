@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var Model = new Schema({
     "MeetingDetails": Object,
     "userId": String,
+
 }, {
     collection: "meetings"
 });

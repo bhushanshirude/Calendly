@@ -48,7 +48,6 @@ module.exports = {
                 }
             });
     },
-
     send: function(req, response) {
         var data = req.body.userId;
         var udata = req.body.udata;
