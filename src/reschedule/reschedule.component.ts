@@ -16,7 +16,6 @@ export class RescheduleComponent implements OnInit {
   private userData;
   private meetingdata;
   private invitationData;
-  // public myModel = ''
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
   // date: Date = new Date();
   // settings = {
@@ -61,7 +60,7 @@ export class RescheduleComponent implements OnInit {
       this.HttpService.put("invitation/" + this.InId, inviData).subscribe(
         res => {
           swal("Reschedule", "Time & Data", "success");
-          this.router.navigate(['home/messagecancel'])
+          this.router.navigate(['home/messagecancel/' + this.InId])
           console.log("=======Resp====", res)
         }, err => {
           swal("call", "data", "error");

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { httpService } from '../httpservice';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2'
 @Component({
   selector: 'app-message-send-cancel',
@@ -12,11 +12,15 @@ export class MessageSendCancelComponent implements OnInit {
   private invitationData;
   private meetingdata;
   private UData;
-  constructor(private HttpServices: httpService, private router: Router) {
+  private id;
+  constructor(private HttpServices: httpService, private router: Router ,private activatedRoute:ActivatedRoute) {
     this.userData = JSON.parse(localStorage.getItem("user"))
+    activatedRoute.params.subscribe(param=>{
+      this.id =param["_id"]
+    })
   }
   ngOnInit() {
-    this.HttpServices.post("invitation/find", { "UserId": this.userData['0']._id }).subscribe(
+    this.HttpServices.post("invitation/find", { "_id": this.id }).subscribe(
       resp => {
         this.invitationData = resp.docs[0].InvitationDetails;
       }, err => {
