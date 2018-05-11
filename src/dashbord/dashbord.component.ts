@@ -9,10 +9,25 @@ import { Router } from '@angular/router';
 })
 export class DashbordComponent implements OnInit {
 private userData;
+private meetingData;
+private invitationData;
   constructor(private HttpService:httpService, private router:Router) {
     this.userData =JSON.parse(localStorage.getItem("user"));
    }
   ngOnInit() {
+    this.HttpService.post("meeting/find",{"userId":this.userData[0]._id}).subscribe(
+      resp=>{
+        this.meetingData=resp.docs;
+        // console.log("+++++++++++++",this.meetingData);
+      },err=>{
+        console.log("-----------",err)
+      });
+      this.HttpService.post("invitation/find",{"UserId":this.userData[0]._id}).subscribe(
+        resp=>{
+          this.invitationData=resp.docs;
+          console.log("++++++++++++++++++",this.invitationData)
+        },err=>{
+          console.log("-------------",err)
+        });
   }
-
 }
