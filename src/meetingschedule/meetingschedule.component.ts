@@ -32,7 +32,7 @@ export class MeetingscheduleComponent implements OnInit {
     });
   }
   ngOnInit() { 
-    this.HttpService.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(
+    this.HttpService.post("meeting/find",{"userId":this.userData._id}).subscribe(
       resp=>{
         this.meetingData =resp.docs[0].MeetingDetails;
         console.log("=====data=========",this.meetingData)
@@ -47,7 +47,7 @@ export class MeetingscheduleComponent implements OnInit {
       let onData = {
         personalDetails: form.value
       }
-      this.HttpService.put("user/" + this.userData['0']._id, onData).subscribe(
+      this.HttpService.put("user/" + this.userData._id, onData).subscribe(
         resp => {
           swal("Thanx", "Please Update time & Data", "success")
           this.router.navigate(['home/message']);

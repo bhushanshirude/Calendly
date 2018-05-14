@@ -22,7 +22,7 @@ export class GroupComponent implements OnInit {
     if (form.valid) {
       let groupData = {
         MeetingDetails: form.value,
-        "userId": this.userData['0']._id,
+        "userId": this.userData._id,
         "groupName":'One-On-group'
       }
       this.HttpServices.post("meeting", groupData).subscribe(resp => {

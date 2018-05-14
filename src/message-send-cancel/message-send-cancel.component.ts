@@ -27,7 +27,7 @@ export class MessageSendCancelComponent implements OnInit {
         console.log("======Error======", err)
       });
 
-      this.HttpServices.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(
+      this.HttpServices.post("meeting/find",{"userId":this.userData._id}).subscribe(
         resp=>{
           this.meetingdata =resp.docs[0].MeetingDetails
         },
@@ -35,7 +35,7 @@ export class MessageSendCancelComponent implements OnInit {
           console.log("====Error====",err)
         });
 
-        this.HttpServices.post("user/find",{"_id":this.userData[0]._id}).subscribe(
+        this.HttpServices.post("user/find",{"_id":this.userData._id}).subscribe(
           resp=>{
             this.UData=resp.docs[0].personalDetails
         },err=>{
@@ -47,7 +47,7 @@ export class MessageSendCancelComponent implements OnInit {
   reschedule(form: any, event: Event) {
     let userData = {
       InvitationDetails:form.value,
-      "userId": this.userData['0']._id,
+      "userId": this.userData._id,
       "IData":this.invitationData,
       "udata":this.UData,
       "MData":this.meetingdata

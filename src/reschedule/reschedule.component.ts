@@ -37,7 +37,7 @@ export class RescheduleComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.HttpService.post("meeting/find", { "userId": this.userData[0]._id }).subscribe(
+    this.HttpService.post("meeting/find", { "userId": this.userData._id }).subscribe(
       resp => {
         this.meetingdata = resp.docs[0].MeetingDetails;
       }, err => {

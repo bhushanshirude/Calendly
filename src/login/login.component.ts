@@ -12,17 +12,17 @@ export class LoginComponent implements OnInit {
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
   }
-  
+
   ngOnInit() {
   }
   login(form: any, event: Event) {
-    
+
     this.HttpService.post("user/find", form.value).subscribe(
       resp => {
         swal("Successfully Login", "Thanks for login", "success")
-        
-        localStorage.setItem("user", JSON.stringify(resp.docs));
-              
+
+        localStorage.setItem("user", JSON.stringify(resp.docs[0]));
+
         this.userData = JSON.parse(localStorage.getItem("user"));
         this.router.navigate(['home/dash'])
       },

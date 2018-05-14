@@ -27,7 +27,7 @@
     <div *ngFor="let hero of meetingData">
         <div class="row mt-4 col-md-10">
             <div class="col-md-2 offset-1">
-                Date : {{val.InvitationDetails.IDate}}
+                Date : {{userData.personalDetails.Date}}
             </div>
         </div>
         <div class="row offset-1 mt-1 col-md-10">
@@ -55,7 +55,7 @@
                 <button class="btn btn-default mt-3"><a class="fa fa-trash "></a><span>Cancel</span></button>
             </div>
             <div class="col-md-5 mt-4" style="margin-left:-55px;">
-                <b>Email:</b><br>{{this.userData['0'].personalDetails.Email}} <br>
+                <b>Email:</b><br>{{this.userData.personalDetails.Email}} <br>
                 <b>Location:</b><br>Pune
             </div>
         </div>

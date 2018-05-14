@@ -17,7 +17,7 @@ export class MessagesendComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.HttpService.post("meeting/find", { "userId": this.userData['0'].id }).subscribe(
+    this.HttpService.post("meeting/find", { "userId": this.userData.id }).subscribe(
       resp => {
         // this.meetingData=resp.docs;  // This is for all array to take data
         this.meetingData = resp.docs['0'].MeetingDetails;
@@ -25,7 +25,7 @@ export class MessagesendComponent implements OnInit {
         console.log("=========MeetingData====", err)
       });
 
-    this.HttpService.post("user/find", { "_id": this.userData[0]._id }).subscribe(
+    this.HttpService.post("user/find", { "_id": this.userData._id }).subscribe(
       resp => {
         this.Data =resp.docs[0].personalDetails;
         console.log("==========",this.Data)
@@ -40,7 +40,7 @@ export class MessagesendComponent implements OnInit {
   schedule(form: any, event: Event) {
     let inviData = {
       InvitationDetails: form.value,
-      "UserId": this.userData['0']._id,
+      "UserId": this.userData._id,
       "UData":this.Data,
       "Mdata": this.meetingData 
     }

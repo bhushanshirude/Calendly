@@ -15,7 +15,7 @@ export class EventtypeComponent implements OnInit {
     console.log("=======JSONs========", this.userData);
   }
   ngOnInit() {
-    this.HttpServices.post("meeting/find",{"userId":this.userData['0']._id}).subscribe(
+    this.HttpServices.post("meeting/find",{"userId":this.userData._id}).subscribe(
       resp=>{
         this.meetingData =resp.docs;
           console.log("+++++++++++++++++",this.meetingData)

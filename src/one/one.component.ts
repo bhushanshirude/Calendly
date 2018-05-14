@@ -22,7 +22,7 @@ export class OneComponent implements OnInit {
     if (form.valid) {
       let oneData = {
         MeetingDetails: form.value,
-        "userId": this.userData['0']._id
+        "userId": this.userData._id
       }
       this.HttpService.post("meeting", oneData).subscribe(
         resp => {
