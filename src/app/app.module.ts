@@ -26,6 +26,7 @@ import { GroupscheduleComponent } from '../groupschedule/groupschedule.component
 import { MessagesendComponent } from '../messagesend/messagesend.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { MessageSendCancelComponent } from '../message-send-cancel/message-send-cancel.component';
+import { CancelmeetingComponent } from '../cancelmeeting/cancelmeeting.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { MessageSendCancelComponent } from '../message-send-cancel/message-send-
     MessagesendComponent,
     RescheduleComponent,
     MessageSendCancelComponent,
+    CancelmeetingComponent,
     
 
   ],

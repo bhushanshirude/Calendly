@@ -13,9 +13,10 @@ export class DashbordComponent implements OnInit {
   private invitationData;
   private showFlag: string = "";
   private Udata;
+
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("------++++++++",this.userData)
+    console.log("------++++++++",this.userData.personalDetails)
   }
   ngOnInit() {
     this.HttpService.post("meeting/find", { "userId": this.userData._id }).subscribe(
@@ -29,6 +30,12 @@ export class DashbordComponent implements OnInit {
         this.invitationData = resp.docs;
       }, err => {
         console.log("-------------", err)
+      });
+      this.HttpService.post("user/find",{"_id":this.userData._id}).subscribe(resp=>{
+        this.Udata =resp.docs['0'].personalDetails.Date;
+        console.log("------------",resp )
+      },err=>{
+        console.log("------------",err)
       });
   }
 }

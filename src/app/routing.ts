@@ -17,7 +17,7 @@ import { GroupscheduleComponent } from '../groupschedule/groupschedule.component
 import { MessagesendComponent } from '../messagesend/messagesend.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { MessageSendCancelComponent } from '../message-send-cancel/message-send-cancel.component';
-
+import { CancelmeetingComponent } from '../cancelmeeting/cancelmeeting.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -39,7 +39,8 @@ export const routes: Routes = [
             {path:'groupSchedule',component:GroupscheduleComponent},
             {path:'message',component:MessagesendComponent},
             {path:'reschedule/:_id',component:RescheduleComponent},
-            {path:'messagecancel/:_id',component:MessageSendCancelComponent}
+            {path:'messagecancel/:_id',component:MessageSendCancelComponent},
+            {path:'cancel',component:CancelmeetingComponent}
         ]
     }
 ];

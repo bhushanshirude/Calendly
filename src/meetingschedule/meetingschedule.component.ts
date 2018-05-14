@@ -24,6 +24,7 @@ export class MeetingscheduleComponent implements OnInit {
   }
   constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
+    console.log("************",this.userData)
   }
   open() {
     const amazingTimePicker = this.atp.open();
