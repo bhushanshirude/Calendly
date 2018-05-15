@@ -31,4 +31,9 @@ export class httpService {
     getLocalStorage(name) {
         return JSON.parse(localStorage.getItem(name));
     }
+
+    delete(url) {
+        return this.http.delete(this.API_URL + url)
+            .map(response => response.json());
+    }
 }

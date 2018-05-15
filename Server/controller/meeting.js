@@ -47,4 +47,14 @@ module.exports = {
                 response.status(200).json({ status: "Success", message: "Success", data: data })
         })
     },
+
+    remove: function(request, response) {
+
+        meetingModel.findByIdAndRemove(request.params.id, function(err, data) {
+            if (err) {
+                response.status(500).json({ status: "Error", message: err, data: '' });
+            }
+            response.status(200).json({ status: "Success", message: "Success", data: data });
+        })
+    }
 }

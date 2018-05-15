@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="row col-md-12">
-    <div class="card offset-1 mt-5" style="width: 18em; height: 5em;" *ngFor="let val of meetingData ">
+    <div class="card offset-1 mt-5" style="width: 18em; height: 5em;" *ngFor="let val of meetingData; let i = index ">
         <div class="row col-md-12">
             <div class="col-sm-12 mt-2">
                 <div class="row col-md-12">
@@ -48,7 +48,7 @@
                         <hr>
                         <i class="dropdown-item" data-toggle="modal" data-target="#myModal"><a class="fa fa-code"></a> Embed</i>
                         <hr>
-                        <i class=" dropdown-item" (click)="Delete()"><a class="fa fa-trash"></a> Delete</i>
+                        <i class=" dropdown-item" (click)="Delete(i)"><a class="fa fa-trash"></a> Delete</i>
                     </div>
                 </div>
             </div>

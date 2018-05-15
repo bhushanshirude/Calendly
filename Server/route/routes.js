@@ -14,9 +14,9 @@ routes.post("/user/find", users.findData);
 // This is for Meeting
 routes.post("/meeting", meeting.create);
 routes.put("/meeting/:id", meeting.update);
-// routes.put("/meeting/data/:id", meeting.updateDate);
 routes.post("/meeting/find", meeting.findData);
 routes.get("/meeting/getall/:id", meeting.getall);
+routes.delete("/meeting/:id", meeting.remove);
 
 // This is for invitation
 routes.post("/invitation", invitation.create);

@@ -15,19 +15,25 @@ export class EventtypeComponent implements OnInit {
     console.log("=======JSONs========", this.userData);
   }
   ngOnInit() {
-    this.HttpServices.post("meeting/find",{"userId":this.userData._id}).subscribe(
-      resp=>{
-        this.meetingData =resp.docs;
-          console.log("+++++++++++++++++",this.meetingData)
-      },err=>{
-        console.log("======Dipak======",err)
+    this.HttpServices.post("meeting/find", { "userId": this.userData._id }).subscribe(
+      resp => {
+        this.meetingData = resp.docs;
+        console.log("+++++++++++++++++", this.meetingData)
+      }, err => {
+        console.log("======Dipak======", err)
       });
   }
   event() {
     this.router.navigate(['/home/new'])
   }
 
-  Delete(){
-    console.log("===============Delete is Working Good===========")
+  Delete(index) {
+    this.HttpServices.delete("meeting/" + this.meetingData[index]._id)
+      .subscribe(response => {
+        console.log("====> Response <=====", response);
+        this.meetingData.splice(index, 1);
+      }, err => {
+        console.log("====> Error Deleting Meeting Data <======", err);
+      });
   }
 }
