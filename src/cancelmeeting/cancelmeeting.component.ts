@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { httpService } from '../httpservice';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cancelmeeting',
@@ -51,7 +52,7 @@ private userData;
     }
     this.HttpServices.post("invitation/emails",canData).subscribe(
       resp=>{
-        console.log("----------------sssssssss------------",resp)
+        swal("Meeting Schedule","Has been Cancel","success");
       },err=>{
         console.log("---------------------sssssssssssss--------",err)
       });

@@ -84,9 +84,9 @@ module.exports = {
         var udata = req.body.udata;
         var mdata = req.body.MData;
         var idata = req.body.IData;
-        var reason = req.body.InvitationDetails;
+        console.log("///////////////", idata)
         var url = config.WEBURL + "home/reschedule/" + data;
-        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + udata.FirstName + " " + udata.LastName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " " + "<b> Has Been Cancel </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + udata.FirstName + " " + udata.LastName + ".";
+        var msg = "<h4>Hello " + idata.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + udata.FirstName + " " + udata.LastName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " " + "<b> Has Been Cancel </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + udata.FirstName + " " + udata.LastName + ".";
         if (sendEmail(udata.Email, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
             return false;
