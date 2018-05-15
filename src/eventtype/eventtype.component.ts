@@ -27,4 +27,7 @@ export class EventtypeComponent implements OnInit {
     this.router.navigate(['/home/new'])
   }
 
+  Delete(){
+    console.log("===============Delete is Working Good===========")
+  }
 }

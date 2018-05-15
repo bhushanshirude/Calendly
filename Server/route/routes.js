@@ -21,6 +21,7 @@ routes.get("/meeting/getall/:id", meeting.getall);
 // This is for invitation
 routes.post("/invitation", invitation.create);
 routes.post("/invitation/email", invitation.send);
+routes.post("/invitation/emails", invitation.sends);
 routes.put("/invitation/:id", invitation.update);
 routes.post("/invitation/find", invitation.findData);
 

@@ -39,6 +39,13 @@ export class DashbordComponent implements OnInit {
   }
 
   Accept(){
+   
     swal("Thanks","Accepet Meeting Schedule","success")
+    this.router.navigate(['/home/event/meetingsch'])
+  }
+
+  Cancel(){
+    this.router.navigate(['/home/cancel'])
+
   }
 }

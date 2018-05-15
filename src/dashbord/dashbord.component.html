@@ -51,8 +51,8 @@
 
         <div class="row offset-1 mt-1 col-md-10" *ngIf="showFlag == hero._id">
             <div class="col-md-4">
-                <button class="btn btn-default mt-4" [routerLink]="['/home/event/meetingsch']"><a class="fa fa-refresh"></a><span>Reschedule</span></button>
-                <button class="btn btn-default mt-3" [routerLink]="['/home/cancel']"><a class="fa fa-trash "></a><span>Cancel</span></button>
+                <button class="btn btn-default mt-4" (click)="Accept()"><a class="fa fa-refresh"></a><span>Reschedule</span></button>
+                <button class="btn btn-default mt-3" (click)="Cancel()"><a class="fa fa-trash "></a><span>Cancel</span></button>
 
             </div>
             <div class="col-md-5 mt-4" style="margin-left:-55px;">

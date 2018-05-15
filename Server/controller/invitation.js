@@ -54,7 +54,6 @@ module.exports = {
         var mdata = req.body.MData;
         var idata = req.body.IData;
         var reason = req.body.InvitationDetails;
-        console.log("ssssssssssssss", reason)
         var url = config.WEBURL + "home/reschedule/" + data;
         var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " , <br>" + "Reason For Reschedule Meeting : " + reason.Reason + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
         // msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
@@ -78,6 +77,23 @@ module.exports = {
                 response.status(200).json({ status: "Success", message: "Success", docs: docs });
             }
         })
+    },
+    sends: function(req, response) {
+
+        var data = req.body.userId;
+        var udata = req.body.udata;
+        var mdata = req.body.MData;
+        var idata = req.body.IData;
+        var reason = req.body.InvitationDetails;
+        var url = config.WEBURL + "home/reschedule/" + data;
+        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + udata.FirstName + " " + udata.LastName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " " + "<b> Has Been Cancel </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + udata.FirstName + " " + udata.LastName + ".";
+        if (sendEmail(udata.Email, "Verification Email", msg)) {
+            response.json({ status: "Email Error", message: "Email could not sent!" });
+            return false;
+        } else {
+            response.status(200).json({ status: "Success", message: "Success", docs: '' });
+            return true;
+        }
     },
 }
 
