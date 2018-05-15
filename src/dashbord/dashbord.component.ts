@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { httpService } from '../httpservice';
 import { Router } from '@angular/router';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-dashbord',
   templateUrl: './dashbord.component.html',
@@ -33,9 +33,12 @@ export class DashbordComponent implements OnInit {
       });
       this.HttpService.post("user/find",{"_id":this.userData._id}).subscribe(resp=>{
         this.Udata =resp.docs['0'].personalDetails.Date;
-        console.log("------------",resp )
       },err=>{
         console.log("------------",err)
       });
+  }
+
+  Accept(){
+    swal("Thanks","Accepet Meeting Schedule","success")
   }
 }

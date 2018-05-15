@@ -11,7 +11,8 @@ var Model = new Schema({
             Password: String,
             Time: String,
             Date: String,
-            Select: String
+            Select: String,
+            Status: String
         },
 
     },

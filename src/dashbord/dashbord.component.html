@@ -53,6 +53,7 @@
             <div class="col-md-4">
                 <button class="btn btn-default mt-4" [routerLink]="['/home/event/meetingsch']"><a class="fa fa-refresh"></a><span>Reschedule</span></button>
                 <button class="btn btn-default mt-3" [routerLink]="['/home/cancel']"><a class="fa fa-trash "></a><span>Cancel</span></button>
+
             </div>
             <div class="col-md-5 mt-4" style="margin-left:-55px;">
                 <b>Email:</b><br>{{this.userData.personalDetails.Email}} <br>
@@ -61,18 +62,3 @@
         </div>
     </div>
 </div>
-
-<!-- 
-<tr *ngFor="let item of items">
-        <td> {{item.name}}</td>
-        <td> {{item.subject}}</td>
-        <td>
-            <table>
-                <tr>
-                    <td *ngFor="let list of details">{{list.firstName}} {{list.lastName}}</td>
-                </tr>
-            </table>
-        </td>
-        <td> {{item.fisrt}}</td>
-        <td> {{item.second}}</td>
-    </tr> -->
