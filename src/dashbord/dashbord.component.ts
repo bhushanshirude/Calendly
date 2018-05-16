@@ -12,11 +12,12 @@ export class DashbordComponent implements OnInit {
   private meetingData;
   private invitationData;
   private showFlag: string = "";
+  private hideFlag: string = "";
   private Udata;
 
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("------++++++++",this.userData.personalDetails)
+    console.log("------++++++++", this.userData.personalDetails)
   }
   ngOnInit() {
     this.HttpService.post("meeting/find", { "userId": this.userData._id }).subscribe(
@@ -31,21 +32,27 @@ export class DashbordComponent implements OnInit {
       }, err => {
         console.log("-------------", err)
       });
-      this.HttpService.post("user/find",{"_id":this.userData._id}).subscribe(resp=>{
-        this.Udata =resp.docs['0'].personalDetails.Date;
-      },err=>{
-        console.log("------------",err)
-      });
+    this.HttpService.post("user/find", { "_id": this.userData._id }).subscribe(resp => {
+      this.Udata = resp.docs['0'].personalDetails.Date;
+    }, err => {
+      console.log("------------", err)
+    });
   }
 
-  Accept(){
-   
-    swal("Thanks","Accepet Meeting Schedule","success")
-    this.router.navigate(['/home/event/meetingsch'])
+  Accept() {
+
+    swal("Thanks", "Accept Meeting Schedule", "success")
   }
 
-  Cancel(){
+  Cancel() {
     this.router.navigate(['/home/cancel'])
 
+  }
+  showHideMeetingDetails(_id) {
+    if (this.showFlag != _id) {
+      this.showFlag = _id;
+    } else {
+      this.showFlag = "";
+    }
   }
 }

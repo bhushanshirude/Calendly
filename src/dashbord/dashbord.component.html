@@ -44,14 +44,14 @@
                 <br>
                 <a style="color:#00a2ff">Reschedule By {{val.InvitationDetails.IName}} : <b style="color:rgb(179,179,179)">"On {{val.InvitationDetails.IDate}} At {{val.InvitationDetails.ITime}} {{val.InvitationDetails.ISelect}} "</b></a>
             </div>
-            <div class="col-md-2 mt-1" style="cursor:pointer; color:#00a2ff;" (click)="showFlag = hero._id ">Details
+            <div class="col-md-2 mt-1" style="cursor:pointer; color:#00a2ff;" (click)="showHideMeetingDetails(val._id)">Details
                 <a style="color:#00a2ff;" class="fa fa-angle-down"></a>
             </div>
         </div>
 
-        <div class="row offset-1 mt-1 col-md-10" *ngIf="showFlag == hero._id">
+        <div class="row offset-1 mt-1 col-md-10" *ngIf="showFlag == val._id">
             <div class="col-md-4">
-                <button class="btn btn-default mt-4" (click)="Accept()"><a class="fa fa-refresh"></a><span>Reschedule</span></button>
+                <button class="btn btn-default mt-4" (click)="Accept()"><a class="fa fa-refresh"></a><span>Accept</span></button>
                 <button class="btn btn-default mt-3" (click)="Cancel()"><a class="fa fa-trash "></a><span>Cancel</span></button>
 
             </div>

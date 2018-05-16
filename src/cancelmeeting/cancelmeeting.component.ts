@@ -53,6 +53,7 @@ private userData;
     this.HttpServices.post("invitation/emails",canData).subscribe(
       resp=>{
         swal("Meeting Schedule","Has been Cancel","success");
+        this.router.navigate(['home/dash'])
       },err=>{
         console.log("---------------------sssssssssssss--------",err)
       });
