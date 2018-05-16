@@ -35,9 +35,9 @@ export const routes: Routes = [
             {path:'one',component:OneComponent},
             {path:'group',component:GroupComponent},
             {path:'schedule',component:ScheduleComponent},
-            {path:'event/meetingsch',component:MeetingscheduleComponent},
+            {path:'event/meetingsch/:id',component:MeetingscheduleComponent},
             {path:'groupSchedule',component:GroupscheduleComponent},
-            {path:'message',component:MessagesendComponent},
+            {path:'message/:id',component:MessagesendComponent},
             {path:'reschedule/:_id',component:RescheduleComponent},
             {path:'messagecancel/:_id',component:MessageSendCancelComponent},
             {path:'cancel',component:CancelmeetingComponent}

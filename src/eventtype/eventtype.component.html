@@ -53,7 +53,7 @@
                 </div>
             </div>
             <p style="margin-left:2em; font-size: 14px; color: rgb(179, 179,179); margin-top:-10px;">{{val.MeetingDetails.grouptype}} {{val.MeetingDetails.Duration}}</p>
-            <a style="font-size:15px; margin-left:1em; margin-top: -25px; " [routerLink]="['meetingsch']">{{userData.personalDetails.Email}}</a>
+            <a style="font-size:15px; margin-left:1em; margin-top: -25px; " [routerLink]="['meetingsch',val._id]">{{userData.personalDetails.Email}}</a>
         </div>
     </div>
 </div>

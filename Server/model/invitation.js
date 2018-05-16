@@ -12,6 +12,7 @@ var Model = new Schema({
         Reason: String,
     },
     "UserId": String,
+    "MId": String
 }, {
     collection: "invitaions"
 });

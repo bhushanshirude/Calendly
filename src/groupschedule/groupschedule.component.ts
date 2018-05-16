@@ -13,7 +13,6 @@ export class GroupscheduleComponent implements OnInit {
 
   constructor(private HttpService: httpService, private router: Router) {
     this.meetingData = JSON.parse(localStorage.getItem("meeting"));
-    console.log("============Bhushansh==========", this.meetingData)
   }
   ngOnInit() {
   }

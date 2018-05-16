@@ -17,7 +17,7 @@ module.exports = {
             }
             var url = config.WEBURL + "home/reschedule/" + newUser._id;
 
-            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.Event + " " + "With " + " " + userdata.FirstName + " " + userdata.LastName + " " + " On" + " " + userdata.Date + " " + "At " + " " + userdata.Time + " " + userdata.Select + " ," + "<br> " + data.Description + " " + "<br><br> Location : " + data.Location + "<h3>Make Change to This Event : </h3>";
+            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.MeetingDetails.Event + " " + "With " + " " + userdata.FirstName + " " + userdata.LastName + " " + " On" + " " + userdata.Date + " " + "At " + " " + userdata.Time + " " + userdata.Select + " ," + "<br> " + data.MeetingDetails.Description + " " + "<br><br> Location : " + data.MeetingDetails.Location + "<h3>Make Change to This Event : </h3>";
 
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";
@@ -79,15 +79,30 @@ module.exports = {
         })
     },
     sends: function(req, response) {
-
         var data = req.body.userId;
         var udata = req.body.udata;
         var mdata = req.body.MData;
         var idata = req.body.IData;
-        console.log("///////////////", idata)
         var url = config.WEBURL + "home/reschedule/" + data;
         var msg = "<h4>Hello " + idata.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + udata.FirstName + " " + udata.LastName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " " + "<b> Has Been Cancel </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + udata.FirstName + " " + udata.LastName + ".";
         if (sendEmail(udata.Email, "Verification Email", msg)) {
+            response.json({ status: "Email Error", message: "Email could not sent!" });
+            return false;
+        } else {
+            response.status(200).json({ status: "Success", message: "Success", docs: '' });
+            return true;
+        }
+    },
+
+
+    asend: function(req, response) {
+        var data = req.body.userId;
+        var udata = req.body.udata;
+        var mdata = req.body.MData;
+        var idata = req.body.IData;
+        var url = config.WEBURL + "home/reschedule/" + data;
+        var msg = "<h4>Hello " + idata['0'].InvitationDetails.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + udata.FirstName + " " + udata.LastName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " " + "<b>Accept </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + udata.FirstName + " " + udata.LastName + ".";
+        if (sendEmail(idata['0'].InvitationDetails.IEmail, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
             return false;
         } else {

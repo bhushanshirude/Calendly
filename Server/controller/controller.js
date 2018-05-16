@@ -49,21 +49,21 @@ module.exports = {
         });
     },
 
-    update: function(request, response) {
-        let Data = request.body.personalDetails;
-        Model.findByIdAndUpdate(request.params.id, {
-                $set: { 'personalDetails.Date': Data.Date, 'personalDetails.Time': Data.Time, 'personalDetails.Select': Data.Select, }
-            },
-            function(err, docs) {
-                if (err) {
-                    response.status(500).json({ status: "Error", message: err, docs: '' });
-                    return false;
-                } else {
-                    response.status(200).json({ status: "Success", message: "Success", docs: docs });
-                    return true;
-                }
-            });
-    },
+    // update: function(request, response) {
+    //     let Data = request.body.personalDetails;
+    //     Model.findByIdAndUpdate(request.params.id, {
+    //             $set: { 'personalDetails.Date': Data.Date, 'personalDetails.Time': Data.Time, 'personalDetails.Select': Data.Select, }
+    //         },
+    //         function(err, docs) {
+    //             if (err) {
+    //                 response.status(500).json({ status: "Error", message: err, docs: '' });
+    //                 return false;
+    //             } else {
+    //                 response.status(200).json({ status: "Success", message: "Success", docs: docs });
+    //                 return true;
+    //             }
+    //         });
+    // },
     updatePassword: function(request, response) {
         let Data = request.body.personalDetails;
         Model.findByIdAndUpdate(request.params.id, {

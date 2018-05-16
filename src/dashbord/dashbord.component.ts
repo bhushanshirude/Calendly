@@ -10,38 +10,56 @@ import swal from 'sweetalert2';
 export class DashbordComponent implements OnInit {
   private userData;
   private meetingData;
-  private invitationData;
+  public displayData: any = [];
   private showFlag: string = "";
-  private hideFlag: string = "";
-  private Udata;
 
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("------++++++++", this.userData.personalDetails)
+
   }
   ngOnInit() {
-    this.HttpService.post("meeting/find", { "userId": this.userData._id }).subscribe(
-      resp => {
-        this.meetingData = resp.docs;
-      }, err => {
-        console.log("-----------", err)
-      });
+
     this.HttpService.post("invitation/find", { "UserId": this.userData._id }).subscribe(
       resp => {
-        this.invitationData = resp.docs;
+        let invitationData = resp.docs;
+        let i = 0;
+        invitationData.filter((invitedData) => {
+          this.displayData[i] = {
+            inviteData: {},
+            meetingData: {}
+          };
+          let mId = invitedData.MId;
+          this.displayData[i].inviteData = invitedData;
+          this.findMeetingData(mId, i);
+          i++;
+        });
+        console.log("====> final Data ========", this.displayData);
       }, err => {
         console.log("-------------", err)
       });
-    this.HttpService.post("user/find", { "_id": this.userData._id }).subscribe(resp => {
-      this.Udata = resp.docs['0'].personalDetails.Date;
-    }, err => {
-      console.log("------------", err)
-    });
   }
 
-  Accept() {
 
-    swal("Thanks", "Accept Meeting Schedule", "success")
+  findMeetingData(id, index) {
+    this.HttpService.get("meeting/getall/" + id).subscribe((resp) => {
+      this.displayData[index].meetingData = resp.data;
+    })
+  }
+  Accept(form: any, event: Event) {
+    swal("Thanks", "Accept Meeting Schedule", "success");
+    // let canData = {
+    //   "userId": this.userData._id,
+    //   "IData": this.invitationData,
+    //   "udata": this.Udata,
+    //   "MData": this.meetingData
+    // }
+    // this.HttpService.post("invitation/accept", canData).subscribe(
+    //   resp => {
+    //     swal("Thanks", "Accept Meeting Schedule", "success");
+
+    //   }, err => {
+    //     console.log("////////////////", err)
+    //   });
   }
 
   Cancel() {
@@ -49,10 +67,12 @@ export class DashbordComponent implements OnInit {
 
   }
   showHideMeetingDetails(_id) {
+    console.log("===> We Got ====>", _id);
     if (this.showFlag != _id) {
       this.showFlag = _id;
     } else {
       this.showFlag = "";
     }
   }
+
 }

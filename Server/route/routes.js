@@ -7,7 +7,7 @@ var routes = express.Router();
 // this is for user
 routes.post("/user", users.create);
 routes.get("/user/:id", users.getone);
-routes.put("/user/:id", users.update);
+// routes.put("/user/:id", users.update);
 routes.put("/user/Email/:id", users.updatePassword);
 routes.post("/user/find", users.findData);
 
@@ -17,11 +17,13 @@ routes.put("/meeting/:id", meeting.update);
 routes.post("/meeting/find", meeting.findData);
 routes.get("/meeting/getall/:id", meeting.getall);
 routes.delete("/meeting/:id", meeting.remove);
+routes.put("/meetings/:id", meeting.updates);
 
 // This is for invitation
 routes.post("/invitation", invitation.create);
 routes.post("/invitation/email", invitation.send);
 routes.post("/invitation/emails", invitation.sends);
+routes.post("/invitation/accept", invitation.asend);
 routes.put("/invitation/:id", invitation.update);
 routes.post("/invitation/find", invitation.findData);
 

@@ -14,14 +14,12 @@ export class AppComponent implements OnInit {
   private userData: any = 0;
   constructor(private Httpservice: httpService, private router: Router, private cdr: ChangeDetectorRef) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log("============This page is app Component===========", this.userData)
    
   }
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    console.log("=======personalDetails========", this.userData)
     this.router.events
       .subscribe(resp => {
         this.userData = localStorage.getItem("user");

@@ -17,13 +17,7 @@ export class RescheduleComponent implements OnInit {
   private meetingdata;
   private invitationData;
   public mask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/,];
-  // date: Date = new Date();
-  // settings = {
-  //   bigBanner: true,
-  //   timePicker: false,
-  //   format: 'dd-MM-yyyy',
-  //   defaultOpen: false,
-  // }
+  
   constructor(private atp: AmazingTimePickerService, private HttpService: httpService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.userData = JSON.parse(localStorage.getItem("user"));
     activatedRoute.params.subscribe(param => {
