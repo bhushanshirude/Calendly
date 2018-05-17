@@ -17,7 +17,13 @@ export class DashbordComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem("user"));
   }
   ngOnInit() {
-
+    this.HttpService.post("meeting/find",{"userId":this.userData._id}).subscribe(
+      resp=>{
+        this.meetingData =resp.docs;
+        console.log("111111111111111111",this.meetingData)
+      },err=>{
+          console.log("22222222222222",err)
+      })
     this.HttpService.post("invitation/find", { "UserId": this.userData._id }).subscribe(
       resp => {
         let invitationData = resp.docs;
@@ -43,6 +49,7 @@ export class DashbordComponent implements OnInit {
       this.displayData[index].meetingData = resp.data;
     })
   }
+
   Accept(invitedData, meetingData) {
     let canData = {
       "userId": this.userData,
@@ -56,7 +63,7 @@ export class DashbordComponent implements OnInit {
         console.log("-------------------", err)
       });
   }
-  
+
   Cancel(invitedData, meetingData) {
     let canData = {
       "userId": this.userData,
@@ -72,11 +79,6 @@ export class DashbordComponent implements OnInit {
       });
   }
 
-  // Cancel(_id ,MId) {
-  //   this.router.navigate(['/home/cancel/' + _id +'/'+ MId])
-
-  // }
-
   showHideMeetingDetails(_id) {
     console.log("===> We Got ====>", _id);
     if (this.showFlag != _id) {
@@ -87,3 +89,8 @@ export class DashbordComponent implements OnInit {
   }
 
 }
+
+  // Cancel(_id ,MId) {
+  //   this.router.navigate(['/home/cancel/' + _id +'/'+ MId])
+
+  // }

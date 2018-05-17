@@ -36,7 +36,7 @@ export class MeetingscheduleComponent implements OnInit {
     });
   }
   ngOnInit() { 
-    this.HttpService.post("meeting/find",{"userId":this.userData._id}).subscribe(
+    this.HttpService.post("meeting/find",{"_id":this.MId}).subscribe(
       resp=>{
         this.meetingData =resp.docs[0].MeetingDetails;
         console.log("=====data=========",this.meetingData)

@@ -31,7 +31,7 @@ export const routes: Routes = [
             {path:'event',component:EventtypeComponent ,canActivate:[AuthGuard]},
             {path:'quick',component:QuickStartComponent ,canActivate:[AuthGuard]},
             {path:'password',component:PasswordComponent ,canActivate:[AuthGuard]},
-            {path:'verify/:id',component:VerifyComponent ,canActivate:[AuthGuard]}, 
+            {path:'verify/:id',component:VerifyComponent }, 
             {path:'new',component:NewComponent ,canActivate:[AuthGuard]} ,
             {path:'one',component:OneComponent ,canActivate:[AuthGuard]},
             {path:'group',component:GroupComponent ,canActivate:[AuthGuard]},

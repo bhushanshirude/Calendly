@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div *ngFor="let hero of meetingData">
-                <a style="color: #9e2ed3; font-size: 15px; margin-left:20px;" class="fa fa-circle mt-1 " data-toggle="dropdown"><span style="color:rgb(179,179,179); font-size:18px;"> {{hero.meetingData.Event}} </span><b style="cursor: pointer;"  class="fa fa-angle-down"></b></a>
+            <div *ngFor="let val of meetingData">
+                <a style="color: #9e2ed3; font-size: 15px; margin-left:20px;" class="fa fa-circle mt-1 " data-toggle="dropdown"><span style="color:rgb(179,179,179); font-size:18px;" *ngIf="meetingData"> {{val.MeetingDetails.Event}} </span><b style="cursor: pointer;"  class="fa fa-angle-down"></b></a>
                 <div class="dropdown-menu mt-2">
                     <i class="dropdown-item" data-toggle="modal" data-target="#myModal"><a class="fa fa-code"></a> Edit</i>
                     <hr style="margin-top: 0em; margin-bottom: 0em;">
@@ -41,7 +41,7 @@
             <br>
             <a>Event Type :<b style="color:aquamarine" *ngIf="hero.meetingData.MeetingDetails"> {{hero.meetingData.MeetingDetails.Event}}</b> ,</a>
             <br>
-            <a style="color:#00a2ff">Reschedule By {{hero.inviteData.InvitationDetails.IName}}: {{hero.inviteData.InvitationDetails.IDate}} {{hero.inviteData.InvitationDetails.ITime}} {{hero.inviteData.InvitationDetails.ISelect}} </a>
+            <a>Reschedule By <span style="color:#9e2ed3">{{hero.inviteData.InvitationDetails.IName}} </span>:<b style="color:#00a2ff;"> {{hero.inviteData.InvitationDetails.IDate}} {{hero.inviteData.InvitationDetails.ITime}} {{hero.inviteData.InvitationDetails.ISelect}}</b></a>
         </div>
         <div class="col-md-2 mt-1" style="cursor:pointer; color:#00a2ff;" (click)="showHideMeetingDetails(hero.inviteData._id)">Details
             <a style="color:#00a2ff;" class="fa fa-angle-down"></a>
@@ -52,7 +52,6 @@
         <div class="col-md-4">
             <button class="btn btn-default mt-4" (click)="Accept(hero.inviteData , hero.meetingData)"><a class="fa fa-refresh"></a><span>Accept</span></button>
             <button class="btn btn-default mt-4" (click)="Cancel(hero.inviteData , hero.meetingData)"><a class="fa fa-refresh"></a><span>Cancel</span></button>
-            <!-- <button class="btn btn-default mt-3" (click)="Cancel(hero.inviteData._id , hero.inviteData.MId)"><a class="fa fa-trash "></a><span>Cancel</span></button> -->
 
         </div>
         <div class="col-md-5 mt-4" style="margin-left:-55px;">
@@ -61,3 +60,14 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+<!-- <button class="btn btn-default mt-3" (click)="Cancel(hero.inviteData._id , hero.inviteData.MId)"><a class="fa fa-trash "></a><span>Cancel</span></button>  -->

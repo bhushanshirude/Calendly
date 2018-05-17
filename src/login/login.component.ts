@@ -14,6 +14,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    // if(!this.userData){
+    //   this.router.navigate(['home/dash'])
+    // } 
+    //  else{
+    //     this.router.navigate(['home/sign'])
+    // }
   }
   login(form: any, event: Event) {
 

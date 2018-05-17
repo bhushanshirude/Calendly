@@ -52,7 +52,7 @@ export class MessagesendComponent implements OnInit {
     this.HttpService.post("invitation", inviData).subscribe(
       resp => {
         swal("Thanks", "Schedule Mail Has Been Send", "success")
-        this.router.navigate(['home/dash']);
+        this.router.navigate(['home/event']);
       }, err => {
         console.log("=========Error=========", err)
       });
