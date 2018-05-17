@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { httpService } from '../httpservice';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 @Component({
   selector: 'app-dashbord',
@@ -13,9 +13,8 @@ export class DashbordComponent implements OnInit {
   public displayData: any = [];
   private showFlag: string = "";
 
-  constructor(private HttpService: httpService, private router: Router) {
+  constructor(private HttpService: httpService, private router: Router ,private activatedRoute:ActivatedRoute) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-
   }
   ngOnInit() {
 
@@ -44,26 +43,22 @@ export class DashbordComponent implements OnInit {
       this.displayData[index].meetingData = resp.data;
     })
   }
-  Accept(form: any, event: Event) {
-    swal("Thanks", "Accept Meeting Schedule", "success");
-    // let canData = {
-    //   "userId": this.userData._id,
-    //   "IData": this.invitationData,
-    //   "udata": this.Udata,
-    //   "MData": this.meetingData
-    // }
-    // this.HttpService.post("invitation/accept", canData).subscribe(
-    //   resp => {
-    //     swal("Thanks", "Accept Meeting Schedule", "success");
+  Accept(invitedData,meetingData) {
+    let canData = {
+      "userId": this.userData,
+      "Mdata":meetingData,
+      "Idata":invitedData,
+    }
+    this.HttpService.post("invitation/accept", canData).subscribe(
+      resp => {
+        swal("Thanks", "Accept Meeting Schedule", "success");
 
-    //   }, err => {
-    //     console.log("////////////////", err)
-    //   });
+      }, err => {
+        console.log("-------------------", err)
+      });
   }
 
   Cancel(_id ,MId) {
-    console.log("-------------",_id);
-    console.log("*************",MId)
     this.router.navigate(['/home/cancel/' + _id +'/'+ MId])
 
   }

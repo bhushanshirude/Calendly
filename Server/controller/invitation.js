@@ -97,13 +97,13 @@ module.exports = {
 
 
     asend: function(req, response) {
-        var data = req.body.userId;
-        var udata = req.body.udata;
-        var mdata = req.body.MData;
-        var idata = req.body.IData;
-        var url = config.WEBURL + "home/reschedule/" + data;
-        var msg = "<h4>Hello " + idata['0'].InvitationDetails.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + udata.FirstName + " " + udata.LastName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " " + "<b>Accept </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + udata.FirstName + " " + udata.LastName + ".";
-        if (sendEmail(idata['0'].InvitationDetails.IEmail, "Verification Email", msg)) {
+        var udata = req.body.userId;
+        var mdata = req.body.Mdata;
+        var idata = req.body.Idata;
+        var data = udata.personalDetails;
+        var url = config.WEBURL + "home/reschedule/" + idata._id;
+        var msg = "<h4>Hello " + idata.InvitationDetails.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.MeetingDetails.Event + " " + "With" + " " + data.FirstName + " " + data.LastName + " " + "At " + " " + idata.InvitationDetails.IDate + " " + "On " + " " + idata.InvitationDetails.ITime + " " + idata.InvitationDetails.ISelect + " ,</h4>" + mdata.MeetingDetails.Description + " Schedule " + " : " + "<b> Accept </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + data.FirstName + " " + data.LastName + ".";
+        if (sendEmail(idata.InvitationDetails.IEmail, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
             return false;
         } else {
@@ -134,4 +134,4 @@ function sendEmail(to, sub, msg) {
         }
         return true;
     });
-}
+};
