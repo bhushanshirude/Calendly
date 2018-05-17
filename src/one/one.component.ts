@@ -12,7 +12,7 @@ export class OneComponent implements OnInit {
   private meetingData;
   constructor(private HttpService: httpService, private router: Router) {
     this.userData = JSON.parse(localStorage.getItem("user"));
-    
+
   }
   ngOnInit() {
   }
@@ -24,6 +24,7 @@ export class OneComponent implements OnInit {
         MeetingDetails: form.value,
         "userId": this.userData._id
       }
+      console.log("--------------", oneData)
       this.HttpService.post("meeting", oneData).subscribe(
         resp => {
           swal("Thanx ", "update Meeting Time", "success");

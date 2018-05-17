@@ -39,7 +39,6 @@ export class DashbordComponent implements OnInit {
       });
   }
 
-
   findMeetingData(id, index) {
     this.HttpService.get("meeting/getall/" + id).subscribe((resp) => {
       this.displayData[index].meetingData = resp.data;
@@ -62,11 +61,14 @@ export class DashbordComponent implements OnInit {
     //   });
   }
 
-  Cancel() {
-    this.router.navigate(['/home/cancel'])
+  Cancel(_id ,MId) {
+    console.log("-------------",_id);
+    console.log("*************",MId)
+    this.router.navigate(['/home/cancel/' + _id +'/'+ MId])
 
   }
-  showHideMeetingDetails(_id) {
+
+  showHideMeetingDetails(_id ) {
     console.log("===> We Got ====>", _id);
     if (this.showFlag != _id) {
       this.showFlag = _id;

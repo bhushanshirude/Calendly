@@ -26,7 +26,6 @@ export class MessagesendComponent implements OnInit {
       resp => {
         // this.meetingData=resp.docs;  // This is for all array to take data
         this.meetingData = resp.docs['0'];
-        console.log("llllllllllllllllllll",this.meetingData)
       }, err => {
         console.log("=========MeetingData====", err)
       });
@@ -52,9 +51,8 @@ export class MessagesendComponent implements OnInit {
     }
     this.HttpService.post("invitation", inviData).subscribe(
       resp => {
-        console.log("sssssssssssssssssssssss",resp)
         swal("Thanks", "Schedule Mail Has Been Send", "success")
-
+        this.router.navigate(['home/dash']);
       }, err => {
         console.log("=========Error=========", err)
       });

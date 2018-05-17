@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { httpService } from '../httpservice';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 
 @Component({
@@ -9,53 +9,55 @@ import swal from 'sweetalert2';
   styleUrls: ['./cancelmeeting.component.css']
 })
 export class CancelmeetingComponent implements OnInit {
-private invitationData;
-private meetingdata;
-private UData;
-private userData;
+  private invitationData;
+  private meetingdata;
+  private userData;
+  private ID;
+  private MId;
 
-  constructor(private HttpServices:httpService ,private router:Router) {
-    this.userData =JSON.parse(localStorage.getItem("user"));
+  constructor(private HttpServices: httpService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.userData = JSON.parse(localStorage.getItem("user"));
+    activatedRoute.params.subscribe(param => {
+      this.ID = param['_id'];
+    }),
+    activatedRoute.params.subscribe(param=>{
+      this.MId =param['_MId']
+    })
+  
 
-   }
+  }
 
   ngOnInit() {
-    this.HttpServices.post("invitation/find", { "_id": this.userData.id }).subscribe(
+    this.HttpServices.post("invitation/find", { "_id": this.ID }).subscribe(
       resp => {
         this.invitationData = resp.docs['0'];
       }, err => {
         console.log("======Error======", err)
       });
 
-      this.HttpServices.post("meeting/find",{"userId":this.userData._id}).subscribe(
-        resp=>{
-          this.meetingdata =resp.docs[0].MeetingDetails
-        },
-        err=>{
-          console.log("====Error====",err)
-        });
-
-        this.HttpServices.post("user/find",{"_id":this.userData._id}).subscribe(
-          resp=>{
-            this.UData=resp.docs[0].personalDetails
-        },err=>{
-          console.log("----------",err)
-        });
+    this.HttpServices.post("meeting/find", { "_id": this.MId }).subscribe(
+      resp => {
+        this.meetingdata = resp.docs[0].MeetingDetails
+      },
+      err => {
+        console.log("====Error====", err)
+      });
   }
-  Cancel(form:any , event:Event){
-    let canData ={
-      invitationData:form.value,
-      "userId": this.userData._id,
-      "IData":this.invitationData.InvitationDetails,
-      "udata":this.UData,
-      "MData":this.meetingdata
+  Cancel(form: any, event: Event) {
+    let canData = {
+      invitationData: form.value,
+      // "userId": this.userData._id,
+      "IData": this.invitationData.InvitationDetails,
+      "MData": this.meetingdata,
+      "udata":this.userData,
     }
-    this.HttpServices.post("invitation/emails",canData).subscribe(
-      resp=>{
-        swal("Meeting Schedule","Has been Cancel","success");
+    console.log("******************",canData)
+    this.HttpServices.post("invitation/emails", canData).subscribe(
+      resp => {
+        swal("Meeting Schedule", "Has been Cancel", "success");
         this.router.navigate(['home/dash'])
-      },err=>{
-        console.log("---------------------sssssssssssss--------",err)
+      }, err => {
+        console.log("---------------sssssssssssss--------", err)
       });
   }
 

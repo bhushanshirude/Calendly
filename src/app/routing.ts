@@ -40,7 +40,7 @@ export const routes: Routes = [
             {path:'message/:id',component:MessagesendComponent},
             {path:'reschedule/:_id',component:RescheduleComponent},
             {path:'messagecancel/:_id',component:MessageSendCancelComponent},
-            {path:'cancel',component:CancelmeetingComponent}
+            {path:'cancel/:_id/:_MId',component:CancelmeetingComponent}
         ]
     }
 ];

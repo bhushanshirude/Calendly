@@ -9,7 +9,7 @@ var Model = new Schema({
         Location: String,
         Link: String,
         grouptype: String,
-        Destination: String,
+        Description: String,
         Country: String,
         Date: String,
         Time: String,
