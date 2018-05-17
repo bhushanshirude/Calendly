@@ -1,4 +1,5 @@
 import { ModuleWithProviders } from '@angular/core';
+import {CanActivate ,CanActivateChild } from '@angular/router';
 import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 import { HomeComponent } from '../home';
 import { SignupComponent } from '../signup/signup.component';
@@ -17,7 +18,7 @@ import { GroupscheduleComponent } from '../groupschedule/groupschedule.component
 import { MessagesendComponent } from '../messagesend/messagesend.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { MessageSendCancelComponent } from '../message-send-cancel/message-send-cancel.component';
-import { CancelmeetingComponent } from '../cancelmeeting/cancelmeeting.component';
+import {AuthGuardService as AuthGuard } from '../auth-GuardService';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,21 +27,20 @@ export const routes: Routes = [
         children: [
             {path:'sign',component:SignupComponent},
             {path:'login',component:LoginComponent},
-            {path:'dash',component:DashbordComponent},
-            {path:'event',component:EventtypeComponent},
-            {path:'quick',component:QuickStartComponent},
-            {path:'password',component:PasswordComponent},
-            {path:'verify/:id',component:VerifyComponent}, 
-            {path:'new',component:NewComponent} ,
-            {path:'one',component:OneComponent},
-            {path:'group',component:GroupComponent},
-            {path:'schedule',component:ScheduleComponent},
-            {path:'event/meetingsch/:id',component:MeetingscheduleComponent},
-            {path:'groupSchedule',component:GroupscheduleComponent},
-            {path:'message/:id',component:MessagesendComponent},
-            {path:'reschedule/:_id',component:RescheduleComponent},
-            {path:'messagecancel/:_id',component:MessageSendCancelComponent},
-            {path:'cancel/:_id/:_MId',component:CancelmeetingComponent}
+            {path:'dash',component:DashbordComponent ,canActivate:[AuthGuard]},
+            {path:'event',component:EventtypeComponent ,canActivate:[AuthGuard]},
+            {path:'quick',component:QuickStartComponent ,canActivate:[AuthGuard]},
+            {path:'password',component:PasswordComponent ,canActivate:[AuthGuard]},
+            {path:'verify/:id',component:VerifyComponent ,canActivate:[AuthGuard]}, 
+            {path:'new',component:NewComponent ,canActivate:[AuthGuard]} ,
+            {path:'one',component:OneComponent ,canActivate:[AuthGuard]},
+            {path:'group',component:GroupComponent ,canActivate:[AuthGuard]},
+            {path:'schedule',component:ScheduleComponent ,canActivate:[AuthGuard]},
+            {path:'event/meetingsch/:id',component:MeetingscheduleComponent ,canActivate:[AuthGuard]},
+            {path:'groupSchedule',component:GroupscheduleComponent ,canActivate:[AuthGuard]},
+            {path:'message/:id',component:MessagesendComponent ,canActivate:[AuthGuard]},
+            {path:'reschedule/:_id',component:RescheduleComponent ,canActivate:[AuthGuard]},
+            {path:'messagecancel/:_id',component:MessageSendCancelComponent ,canActivate:[AuthGuard]},
         ]
     }
 ];

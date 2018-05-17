@@ -26,8 +26,8 @@ import { GroupscheduleComponent } from '../groupschedule/groupschedule.component
 import { MessagesendComponent } from '../messagesend/messagesend.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { MessageSendCancelComponent } from '../message-send-cancel/message-send-cancel.component';
-import { CancelmeetingComponent } from '../cancelmeeting/cancelmeeting.component';
-
+import { AuthGuardService as AuthGuard } from '../auth-GuardService';
+import {AuthService} from '../auth.service';
 
 @NgModule({
   declarations: [
@@ -49,9 +49,6 @@ import { CancelmeetingComponent } from '../cancelmeeting/cancelmeeting.component
     MessagesendComponent,
     RescheduleComponent,
     MessageSendCancelComponent,
-    CancelmeetingComponent,
-    
-
   ],
   imports: [
     BrowserModule,
@@ -62,7 +59,7 @@ import { CancelmeetingComponent } from '../cancelmeeting/cancelmeeting.component
     AmazingTimePickerModule,
     TextMaskModule
   ],
-  providers: [httpService ],
+  providers: [httpService,AuthGuard ,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
