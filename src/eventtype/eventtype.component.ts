@@ -10,6 +10,8 @@ import { httpService } from '../httpservice';
 export class EventtypeComponent implements OnInit {
   private userData;
   private meetingData;
+  private id;
+  private Idata;
   constructor(private router: Router, private HttpServices: httpService) {
     this.userData = JSON.parse(localStorage.getItem("user"));
   }
@@ -25,18 +27,19 @@ export class EventtypeComponent implements OnInit {
   event() {
     this.router.navigate(['/home/new'])
   }
-  
-  Delete(index) {
+
+  Delete(index, _id) {
     this.HttpServices.delete("meeting/" + this.meetingData[index]._id)
       .subscribe(response => {
         console.log("====> Response <=====", response);
         this.meetingData.splice(index, 1);
-        // this.meetingData.post("invitation/find", {"MId":this.meetingData[index]._id}).subscribe(
-        //   response=>{
-        //   this.meetingData.splice(index, 1);
-        // },err=>{
-        //   console.log("====> Error Deleting Meeting Data <======", err);
-        // });
+
+        this.HttpServices.delete("invitation/meeting/" + _id ).subscribe(
+          response => {
+            console.log("--------------->>>>Response<<<<<<-----------", response)
+          }, err => {
+            console.log("====> Error Deleting Meeting Data <======", err);
+          });
       }, err => {
         console.log("====> Error Deleting Meeting Data <======", err);
       });

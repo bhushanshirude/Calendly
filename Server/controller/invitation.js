@@ -17,7 +17,7 @@ module.exports = {
             }
             var url = config.WEBURL + "home/reschedule/" + newUser._id;
             var urls = config.WEBURL + "home/Confirm/" + newUser._id
-            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.MeetingDetails.Event + " " + "With " + " " + userdata.FirstName + " " + userdata.LastName + " " + " On" + " " + data.MeetingDetails.Date + " " + "At " + " " + data.MeetingDetails.Time + " " + data.MeetingDetails.Select + " ," + "<br> " + data.MeetingDetails.Description + " " + "<br><br> Location : " + data.MeetingDetails.Location + "<h3>Make Change to This Event : </h3>";
+            var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.MeetingDetails.Event + " " + "With " + " " + userdata.FirstName + " " + userdata.LastName + " " + " On" + " " + data.MeetingDetails.Date + " " + "At " + " " + data.MeetingDetails.Time + " " + data.MeetingDetails.Select + " " + "India Standard Time (IST)" + " " + ":" + " " + " (GMT +5:30 hours)" + " ," + "<br> " + data.MeetingDetails.Description + " " + "<br><br> Location : " + data.MeetingDetails.Location + "<h3>Make Change to This Event : </h3>";
 
             msg += "<a href='" + urls + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Confirm</button></a ><br><br><br>";
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
@@ -56,7 +56,7 @@ module.exports = {
         var idata = req.body.IData;
         var reason = req.body.InvitationDetails;
         var url = config.WEBURL + "home/reschedule/" + data;
-        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " , <br>" + "Meeting Reschedule  : " + "<b>" + reason.Reason + "</b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
+        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " " + "India Standard Time (IST)" + " " + ":" + " " + " (GMT +5:30 hours)" + " ,</h4>" + mdata.Description + " , <br>" + "Meeting Reschedule  : " + "<b>" + reason.Reason + "</b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
 
         if (sendEmail(udata.Email, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
@@ -83,7 +83,7 @@ module.exports = {
         var idata = req.body.Idata;
         var data = udata.personalDetails;
         var url = config.WEBURL + "home/reschedule/" + idata._id;
-        var msg = "<h4>Hello " + idata.InvitationDetails.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.MeetingDetails.Event + " " + "With" + " " + data.FirstName + " " + data.LastName + " " + "At " + " " + idata.InvitationDetails.IDate + " " + "On " + " " + idata.InvitationDetails.ITime + " " + idata.InvitationDetails.ISelect + " ,</h4>" + mdata.MeetingDetails.Description + " Schedule " + " : " + "<b> Cancel </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + data.FirstName + " " + data.LastName + ".";
+        var msg = "<h4>Hello " + idata.InvitationDetails.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.MeetingDetails.Event + " " + "With" + " " + data.FirstName + " " + data.LastName + " " + "At " + " " + mdata.MeetingDetails.Date + " " + "On " + " " + mdata.MeetingDetails.Time + " " + mdata.MeetingDetails.Select + " " + "India Standard Time (IST)" + " " + ":" + " " + " (GMT +5:30 hours)" + " ,</h4>" + "<b>" + mdata.MeetingDetails.Description + "</b>" + " Schedule " + " : " + "<b> Cancel </b>" + " .<br>" + "</h4><br><b>Location</b>: " + mdata.MeetingDetails.Location + ".<br><h3>Thanks& Regards</h3>" + data.FirstName + " " + data.LastName + ".";
         if (sendEmail(idata.InvitationDetails.IEmail, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
             return false;
@@ -93,13 +93,13 @@ module.exports = {
         }
     },
 
-    asend: function(req, response) {
+    Accept: function(req, response) {
         var udata = req.body.userId;
         var mdata = req.body.Mdata;
         var idata = req.body.Idata;
         var data = udata.personalDetails;
         var url = config.WEBURL + "home/reschedule/" + idata._id;
-        var msg = "<h4>Hello " + idata.InvitationDetails.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.MeetingDetails.Event + " " + "With" + " " + data.FirstName + " " + data.LastName + " " + "At " + " " + idata.InvitationDetails.IDate + " " + "On " + " " + idata.InvitationDetails.ITime + " " + idata.InvitationDetails.ISelect + " ,</h4>" + mdata.MeetingDetails.Description + " Schedule " + " : " + "<b> Accept </b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + data.FirstName + " " + data.LastName + ".";
+        var msg = "<h4>Hello " + idata.InvitationDetails.IName + " " + ",</h4>" + "<h4>Your " + " " + mdata.MeetingDetails.Event + " " + "With" + " " + data.FirstName + " " + data.LastName + " " + "At " + " " + mdata.MeetingDetails.Date + " " + "On " + " " + mdata.MeetingDetails.Time + " " + mdata.MeetingDetails.Select + " " + " India Standard Time (IST) " + " " + ":" + " " + " (GMT +5:30 hours)" + " ,</h4>" + "<b>" + mdata.MeetingDetails.Description + "</b>" + " Schedule " + " : " + "<b> Accept </b>" + " .<br>" + "</h4><br><b>Location</b>: " + mdata.MeetingDetails.Location + ".<br><h3>Thanks& Regards</h3>" + data.FirstName + " " + data.LastName + ".";
         if (sendEmail(idata.InvitationDetails.IEmail, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
             return false;
@@ -126,14 +126,14 @@ module.exports = {
                 }
             });
     },
-    Consend: function(req, response) {
+    Confirm: function(req, response) {
         var data = req.body.userId;
         var udata = req.body.udata;
         var mdata = req.body.MData;
         var idata = req.body.IData;
         var reason = req.body.InvitationDetails;
         var url = config.WEBURL + "home/reschedule/" + data;
-        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + mdata.Date + " " + "On " + " " + mdata.Time + " " + mdata.Select + " ,</h4>" + mdata.Description + " , <br>" + "Meeting Reschedule  : " + "<b>" + reason.Reason + "</b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
+        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + mdata.Date + " " + "On " + " " + mdata.Time + " " + mdata.Select + " " + "India Standard Time (IST)" + " " + ":" + " " + " (GMT +5:30 hours)" + " ,</h4>" + mdata.Description + " , <br>" + "Meeting Reschedule  : " + "<b>" + reason.Reason + "</b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
 
         if (sendEmail(udata.Email, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
@@ -143,6 +143,32 @@ module.exports = {
             return true;
         }
     },
+
+    delete: function(request, response) {
+        meetingModel.findByIdAndRemove(request.params.id, function(err, data) {
+            if (err) {
+                response.status(500).json({ status: "Error", message: err, data: '' });
+            }
+            response.status(200).json({ status: "Success", message: "Success", data: data });
+        })
+    },
+
+    deleteByMID: function(request, response) {
+        console.log("KKKKKKKKKKKKKKKKKKKKKKKKK", request.body)
+
+        invitationModel.findOne({ "MId": request.params.MId }, function(err, resp) {
+            if (err || !resp) {
+                response.status(500).json({ status: "Error", message: err, data: '' })
+                return false;
+            }
+            invitationModel.findByIdAndRemove(resp._id, function(err, resp) {
+                if (err) {
+                    response.status(500).json({ status: "Error", message: err, data: '' });
+                }
+                response.status(200).json({ status: "Success", message: "Success", data: data });
+            });
+        })
+    }
 }
 
 function sendEmail(to, sub, msg) {

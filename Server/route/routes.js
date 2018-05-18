@@ -22,10 +22,12 @@ routes.put("/meetings/:id", meeting.updates);
 routes.post("/invitation", invitation.create);
 routes.post("/invitation/email", invitation.send);
 routes.post("/invitation/emails", invitation.sends);
-routes.post("/invitation/accept", invitation.asend);
-routes.post("/invitation/confirm", invitation.Consend);
+routes.post("/invitation/accept", invitation.Accept);
+routes.post("/invitation/confirm", invitation.Confirm);
 routes.put("/invitation/:id", invitation.update);
 routes.post("/invitation/find", invitation.findData);
-routes.post("/invitation/:_id", invitation.updates)
+routes.post("/invitation/:_id", invitation.updates);
+routes.delete("/invitation/:id", invitation.delete);
+routes.delete("/invitation/meeting/:MId", invitation.deleteByMID);
 
 module.exports = routes;
