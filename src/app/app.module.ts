@@ -26,6 +26,7 @@ import { GroupscheduleComponent } from '../groupschedule/groupschedule.component
 import { MessagesendComponent } from '../messagesend/messagesend.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
 import { MessageSendCancelComponent } from '../message-send-cancel/message-send-cancel.component';
+import { ConfirmComponent } from '../confirm/confirm.component';
 import { AuthGuardService as AuthGuard } from '../auth-GuardService';
 import {AuthService} from '../auth.service';
 
@@ -49,6 +50,7 @@ import {AuthService} from '../auth.service';
     MessagesendComponent,
     RescheduleComponent,
     MessageSendCancelComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,

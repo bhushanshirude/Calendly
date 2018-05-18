@@ -41,7 +41,7 @@
             <br>
             <a>Event Type :<b style="color:aquamarine" *ngIf="hero.meetingData.MeetingDetails"> {{hero.meetingData.MeetingDetails.Event}}</b> ,</a>
             <br>
-            <a>Reschedule By <span style="color:#9e2ed3">{{hero.inviteData.InvitationDetails.IName}} </span>:<b style="color:#00a2ff;"> {{hero.inviteData.InvitationDetails.IDate}} {{hero.inviteData.InvitationDetails.ITime}} {{hero.inviteData.InvitationDetails.ISelect}}</b></a>
+            <a>Schedule By <span style="color:#9e2ed3">{{hero.inviteData.InvitationDetails.IName}} </span>:<b style="color:#00a2ff;"> {{hero.inviteData.InvitationDetails.Reason}} .</b></a>
         </div>
         <div class="col-md-2 mt-1" style="cursor:pointer; color:#00a2ff;" (click)="showHideMeetingDetails(hero.inviteData._id)">Details
             <a style="color:#00a2ff;" class="fa fa-angle-down"></a>

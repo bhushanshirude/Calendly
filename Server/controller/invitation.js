@@ -16,12 +16,12 @@ module.exports = {
                 return false;
             }
             var url = config.WEBURL + "home/reschedule/" + newUser._id;
-
+            var urls = config.WEBURL + "home/Confirm/" + newUser._id
             var msg = "<h4>Hello " + newUser.InvitationDetails.IName + ",</h4>" + "<h4>Your " + data.MeetingDetails.Event + " " + "With " + " " + userdata.FirstName + " " + userdata.LastName + " " + " On" + " " + data.MeetingDetails.Date + " " + "At " + " " + data.MeetingDetails.Time + " " + data.MeetingDetails.Select + " ," + "<br> " + data.MeetingDetails.Description + " " + "<br><br> Location : " + data.MeetingDetails.Location + "<h3>Make Change to This Event : </h3>";
 
+            msg += "<a href='" + urls + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Confirm</button></a ><br><br><br>";
             msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:#007bff; height:50px; border:solid 2px #007bff; width:14em; cursor:pointer;'>Reschedule</button></a ><br><br><br>";
-            msg += "<a href='" + url + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a > ";
-
+            msg += "<a href='" + urls + "'><button style='margin-left:100px; background-color:#fff; color:rgb(179,179,179); height:50px; border:solid 2px rgb(179,179,179); width:14em; cursor:pointer;' >Cancel</button rgb(179, 179,179)></a ><br><br><br> ";
             if (sendEmail(newUser.InvitationDetails.IEmail, "Verification Email", msg)) {
                 response.json({ status: "Email Error", message: "Email could not sent!" });
                 return false;
@@ -48,6 +48,7 @@ module.exports = {
                 }
             });
     },
+
     send: function(req, response) {
         var data = req.body.userId;
         var udata = req.body.udata;
@@ -55,7 +56,7 @@ module.exports = {
         var idata = req.body.IData;
         var reason = req.body.InvitationDetails;
         var url = config.WEBURL + "home/reschedule/" + data;
-        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " , <br>" + "Reason For Reschedule Meeting : " + reason.Reason + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
+        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + idata.IDate + " " + "On " + " " + idata.ITime + " " + idata.ISelect + " ,</h4>" + mdata.Description + " , <br>" + "Meeting Reschedule  : " + "<b>" + reason.Reason + "</b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
 
         if (sendEmail(udata.Email, "Verification Email", msg)) {
             response.json({ status: "Email Error", message: "Email could not sent!" });
@@ -107,6 +108,24 @@ module.exports = {
             return true;
         }
     },
+    updates: function(request, response) {
+        let Data = request.body.InvitationDetails;
+        let id = request.body.id;
+        invitationModel.findByIdAndUpdate(request.body.id, {
+                $set: {
+                    'InvitationDetails.Reason': Data.Reason
+                }
+            },
+            function(err, docs) {
+                if (err) {
+                    response.status(500).json({ status: "Error", message: err, docs: '' });
+                    return false;
+                } else {
+                    response.status(200).json({ status: "Success", message: "Success", docs: docs });
+                    return true;
+                }
+            });
+    }
 }
 
 function sendEmail(to, sub, msg) {
@@ -130,4 +149,4 @@ function sendEmail(to, sub, msg) {
         }
         return true;
     });
-};
+}

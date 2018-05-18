@@ -17,6 +17,7 @@ import { MeetingscheduleComponent } from '../meetingschedule/meetingschedule.com
 import { GroupscheduleComponent } from '../groupschedule/groupschedule.component';
 import { MessagesendComponent } from '../messagesend/messagesend.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
+import { ConfirmComponent } from '../confirm/confirm.component';
 import { MessageSendCancelComponent } from '../message-send-cancel/message-send-cancel.component';
 import {AuthGuardService as AuthGuard } from '../auth-GuardService';
 
@@ -41,6 +42,8 @@ export const routes: Routes = [
             {path:'message/:id',component:MessagesendComponent ,canActivate:[AuthGuard]},
             {path:'reschedule/:_id',component:RescheduleComponent ,canActivate:[AuthGuard]},
             {path:'messagecancel/:_id',component:MessageSendCancelComponent ,canActivate:[AuthGuard]},
+            {path:'Confirm/:_id',component: ConfirmComponent ,canActivate:[AuthGuard]},
+           
         ]
     }
 ];
