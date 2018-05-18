@@ -48,15 +48,16 @@
         </div>
     </div>
 
-    <div class="row offset-1 mt-1 col-md-10" *ngIf="showFlag == hero.inviteData._id">
+    <div class="row offset-1 mt-3 col-md-10" *ngIf="showFlag == hero.inviteData._id">
         <div class="col-md-4">
             <button class="btn btn-default mt-4" (click)="Accept(hero.inviteData , hero.meetingData)"><a class="fa fa-refresh"></a><span>Accept</span></button>
             <button class="btn btn-default mt-4" (click)="Cancel(hero.inviteData , hero.meetingData)"><a class="fa fa-refresh"></a><span>Cancel</span></button>
 
         </div>
-        <div class="col-md-5 mt-4" style="margin-left:-55px;">
-            <b>Email:</b><br>{{this.userData.personalDetails.Email}} <br>
-            <b>Location:</b><br>Pune
+        <div class="col-md-5 mt-4" style="margin-left:-95px;">
+            <b>Email: </b><a style="color:rgb(85, 85, 84);"> {{this.userData.personalDetails.Email}} </a> <br>
+            <b>Location: </b><a style="color:rgb(93, 93, 93);"> {{hero.meetingData.MeetingDetails.Location}} </a><br>
+            <b>Reschedule Date: </b><a style="color: #00a2ff"> At {{hero.inviteData.InvitationDetails.IDate}}  On   {{hero.inviteData.InvitationDetails.ITime}} {{hero.inviteData.InvitationDetails.ISelect}} </a>
         </div>
     </div>
 </div>

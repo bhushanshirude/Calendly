@@ -24,7 +24,10 @@
                     <input type="text" class="form-control" placeholder="{{userData.personalDetails.Email}}" readonly>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <input type="text" class="form-control" placeholder="Enter Reason" name="Reason" ngModel #Reason="ngModel">
+                    <select class="form-control" name="Reason" ngModel #Reason="ngModel" placeholder="Select Country Name" required>
+                        <option value="" selected disabled>Please select Reason</option>
+                        <option>Reschedule Meeting</option>    
+                      </select>
                 </div>
                 <div class="footer mb-3 offset-2 mt-4">
                     <button class="btn btn-primary" type="Submit">Reschedule Event</button>

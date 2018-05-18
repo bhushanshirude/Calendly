@@ -33,7 +33,6 @@ export class EventtypeComponent implements OnInit {
       .subscribe(response => {
         console.log("====> Response <=====", response);
         this.meetingData.splice(index, 1);
-
         this.HttpServices.delete("invitation/meeting/" + _id ).subscribe(
           response => {
             console.log("--------------->>>>Response<<<<<<-----------", response)
