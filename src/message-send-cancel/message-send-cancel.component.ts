@@ -55,7 +55,7 @@ export class MessageSendCancelComponent implements OnInit {
     }
     this.HttpServices.post("invitation/email ", userData).subscribe(
       resp => {
-        swal("Thanx", "Reschulde Meeting Mail has been Send", "success")
+        swal("Thanx", "Reschulde Meeting Mail has been Send", "success");
         this.router.navigate(['/home/event']);
         this.HttpServices.post("invitation/" + this.id, userData).subscribe(
           resp => {

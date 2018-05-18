@@ -23,6 +23,7 @@ routes.post("/invitation", invitation.create);
 routes.post("/invitation/email", invitation.send);
 routes.post("/invitation/emails", invitation.sends);
 routes.post("/invitation/accept", invitation.asend);
+routes.post("/invitation/confirm", invitation.Consend);
 routes.put("/invitation/:id", invitation.update);
 routes.post("/invitation/find", invitation.findData);
 routes.post("/invitation/:_id", invitation.updates)

@@ -125,7 +125,24 @@ module.exports = {
                     return true;
                 }
             });
-    }
+    },
+    Consend: function(req, response) {
+        var data = req.body.userId;
+        var udata = req.body.udata;
+        var mdata = req.body.MData;
+        var idata = req.body.IData;
+        var reason = req.body.InvitationDetails;
+        var url = config.WEBURL + "home/reschedule/" + data;
+        var msg = "<h4>Hello " + udata.FirstName + " " + udata.LastName + ",</h4>" + "<h4>Your " + " " + mdata.Event + " " + "With" + " " + idata.IName + " " + "At " + " " + mdata.Date + " " + "On " + " " + mdata.Time + " " + mdata.Select + " ,</h4>" + mdata.Description + " , <br>" + "Meeting Reschedule  : " + "<b>" + reason.Reason + "</b>" + " .<br>" + "</h4><br><b>Location</b>: Pune.<br><h3>Thanks& Regards</h3>" + idata.IName + ".";
+
+        if (sendEmail(udata.Email, "Verification Email", msg)) {
+            response.json({ status: "Email Error", message: "Email could not sent!" });
+            return false;
+        } else {
+            response.status(200).json({ status: "Success", message: "Success", docs: '' });
+            return true;
+        }
+    },
 }
 
 function sendEmail(to, sub, msg) {

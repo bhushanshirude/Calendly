@@ -21,15 +21,22 @@ export class EventtypeComponent implements OnInit {
         console.log("======Dipak======", err)
       });
   }
+
   event() {
     this.router.navigate(['/home/new'])
   }
-
+  
   Delete(index) {
     this.HttpServices.delete("meeting/" + this.meetingData[index]._id)
       .subscribe(response => {
         console.log("====> Response <=====", response);
         this.meetingData.splice(index, 1);
+        // this.meetingData.post("invitation/find", {"MId":this.meetingData[index]._id}).subscribe(
+        //   response=>{
+        //   this.meetingData.splice(index, 1);
+        // },err=>{
+        //   console.log("====> Error Deleting Meeting Data <======", err);
+        // });
       }, err => {
         console.log("====> Error Deleting Meeting Data <======", err);
       });

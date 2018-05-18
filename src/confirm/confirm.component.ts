@@ -54,7 +54,7 @@ export class ConfirmComponent implements OnInit {
       "MData":this.meetingdata,
       "id":this.id
     }
-    this.HttpServices.post("invitation/email ", userData).subscribe(
+    this.HttpServices.post("invitation/confirm ", userData).subscribe(
       resp => {
         swal("Thanx", "Reschulde Meeting Mail has been Send", "success")
         this.router.navigate(['/home/event']);
@@ -64,6 +64,7 @@ export class ConfirmComponent implements OnInit {
           },err=>{
             console.log("-------------",err)
           });
+
       }, err => {
         console.log("======error========", err)
         swal("Error", "Reschdule mail has Not Been send", "error")
