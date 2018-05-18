@@ -20,9 +20,8 @@ export class DashbordComponent implements OnInit {
     this.HttpService.post("meeting/find",{"userId":this.userData._id}).subscribe(
       resp=>{
         this.meetingData =resp.docs;
-        console.log("111111111111111111",this.meetingData)
       },err=>{
-          console.log("22222222222222",err)
+          console.log("-----------",err)
       })
     this.HttpService.post("invitation/find", { "UserId": this.userData._id }).subscribe(
       resp => {

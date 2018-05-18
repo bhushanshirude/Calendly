@@ -154,20 +154,18 @@ module.exports = {
     },
 
     deleteByMID: function(request, response) {
-        console.log("KKKKKKKKKKKKKKKKKKKKKKKKK", request.body)
-
         invitationModel.findOne({ "MId": request.params.MId }, function(err, resp) {
             if (err || !resp) {
-                response.status(500).json({ status: "Error", message: err, data: '' })
+                response.status(500).json({ status: "Error", message: err | "User does not exist", docs: '' });
                 return false;
             }
             invitationModel.findByIdAndRemove(resp._id, function(err, resp) {
                 if (err) {
                     response.status(500).json({ status: "Error", message: err, data: '' });
                 }
-                response.status(200).json({ status: "Success", message: "Success", data: data });
+                response.status(200).json({ status: "Success", message: "Success", data: '' });
             });
-        })
+        });
     }
 }
 
